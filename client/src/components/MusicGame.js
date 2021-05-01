@@ -1,7 +1,7 @@
 import React from "react";
 import Song from "../components/Song";
 
-const MusicGame = ({songList, getRandomInt, selectedSong}) => {
+const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong}) => {
 
     
 
@@ -10,20 +10,23 @@ const MusicGame = ({songList, getRandomInt, selectedSong}) => {
     // const songClips = songList.map((song, index) => {
     //    return <button key={index} value={song.link[1].attributes.href} onClick={handlePlay}>Play</button>
 
-        
+
       
     // })
 
-    
+    const handleSelectedSong = () => {
+      setSelectedSong(songList[getRandomInt(40)])
+    }
 
 
   
     return(
         
-        <div>
+        <div id="musicgame">
             { selectedSong !== null ? <Song selectedSong={selectedSong}/> : null} 
-        
-
+            <br/>
+            <button onClick={handleSelectedSong}>Next Song</button>
+            <br/>
         </div>
        
     //    [getRandomInt(40)]
