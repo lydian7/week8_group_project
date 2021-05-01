@@ -20,7 +20,7 @@ const handlePlay = (e) => {
   
     return(
         <div>
-             <h1>This is the MusicGame</h1>
+             
         <ul>
             {songClips}
         </ul>

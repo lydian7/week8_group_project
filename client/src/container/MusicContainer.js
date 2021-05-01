@@ -25,7 +25,7 @@ const MusicContainer = () => {
 
     return(
         <div>
-        <h1>This is the Container</h1>
+        
         <select onChange={handleGenreChange}>
             <option>All Genres</option> 
             <option value="21">Rock</option>
