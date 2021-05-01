@@ -28,5 +28,12 @@
 
 #musicgame{
     justify-content: space-between;
+    border-style: solid;
+}
+
+#guesssong{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 

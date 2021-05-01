@@ -24,7 +24,9 @@ const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong}) => {
         
         <div id="musicgame">
             { selectedSong !== null ? <Song selectedSong={selectedSong}/> : null} 
+            <br/>
             <button onClick={handleSelectedSong}>Next Song</button>
+            <br/>
         </div>
        
     //    [getRandomInt(40)]
