@@ -22,7 +22,7 @@ const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong}) => {
   
     return(
         
-        <div>
+        <div id="musicgame">
             { selectedSong !== null ? <Song selectedSong={selectedSong}/> : null} 
             <button onClick={handleSelectedSong}>Next Song</button>
         </div>
