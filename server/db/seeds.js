@@ -23,4 +23,4 @@ db.facts.insertMany ([
     }
     
 
-])
+]);
