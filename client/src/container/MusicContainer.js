@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import MusicGame from "../components/MusicGame";
 
 const MusicContainer = () => {
     
@@ -20,6 +21,8 @@ const MusicContainer = () => {
             setSelectedGenre(e.target.value)
     }
 
+    
+
     return(
         <div>
         <h1>This is the Container</h1>
@@ -29,6 +32,7 @@ const MusicContainer = () => {
             <option value="14">Pop</option>
             <option value="11">Jazz</option>
         </select>
+        <MusicGame songList={songList} selectedGenre={selectedGenre}/>
         </div>
     )
 }
