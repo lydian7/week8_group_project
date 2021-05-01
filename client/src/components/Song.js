@@ -18,7 +18,7 @@ const Song = ({selectedSong}) => {
     // <h1>test</h1>
       
       <div>
-         {typeof(selectedSong) != "undefined" ? <button value={selectedSong.link[1].attributes.href} onClick={handlePlay}>Play</button> : <p>test</p>}
+         {typeof(selectedSong) != "undefined" ? <button value={selectedSong.link[1].attributes.href} onClick={handlePlay}>Play</button> : <p>Selected song is undefined</p>}
       </div>
 
   )

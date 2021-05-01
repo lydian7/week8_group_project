@@ -10,11 +10,11 @@ const MusicContainer = () => {
     const [factList, setFactList] = useState([]);
 
     useEffect(() => {
-      setSelectedSong(songList[0])
+      setSelectedSong(songList[getRandomInt(40)])
     }, [songList])
 
     useEffect(() => {
-      fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=20/genre=${selectedGenre}/json`)
+      fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=40/genre=${selectedGenre}/json`)
       .then(res => res.json())
       .then(data => setSongList(data.feed.entry))
     }, [selectedGenre])
@@ -40,7 +40,7 @@ const MusicContainer = () => {
             <option value="14">Pop</option>
             <option value="11">Jazz</option>
         </select>
-        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong}/>
+        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong}/>
         </div>
     )
 }
