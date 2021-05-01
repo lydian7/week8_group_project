@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Song = ({selectedSong}) => {
+
+
 
     const handlePlay = (e) => {
         console.log(e.target.value)
         const audio = new Audio(e.target.value)
         audio.play()
-      
     }
 
-
+    console.log(selectedSong)
 
 
   return (
 
-    // <h1>hello ahmet</h1>
+    // <h1>test</h1>
       
       <div>
-         { selectedSong !== null ? <button value={selectedSong.link[1].attributes.href} onClick={handlePlay}>Play</button> : null} 
+         {typeof(selectedSong) != "undefined" ? <button value={selectedSong.link[1].attributes.href} onClick={handlePlay}>Play</button> : <p>test</p>}
       </div>
 
   )

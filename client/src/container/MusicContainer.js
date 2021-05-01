@@ -14,18 +14,15 @@ const MusicContainer = () => {
     }, [songList])
 
     useEffect(() => {
-        
-      fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=40/genre=${selectedGenre}/json`)
+      fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=20/genre=${selectedGenre}/json`)
       .then(res => res.json())
       .then(data => setSongList(data.feed.entry))
-      
     }, [selectedGenre])
 
     console.log(`Selected genre is ${selectedGenre}`);
 
     const handleGenreChange = (e) => { // ==>>> NEED TO PREVENT DEFAULT VALUE FROM PASSING 0
-        setSelectedGenre(e.target.value)
-           
+        setSelectedGenre(e.target.value)    
     };
 
     function getRandomInt(max) {
