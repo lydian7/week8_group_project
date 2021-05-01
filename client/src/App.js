@@ -11,6 +11,9 @@ function App() {
         <div className="musiccontainer">
         <MusicContainer />
         </div>
+        <footer id="footer">
+          <h3>MUSIC APP 2021</h3>
+        </footer>
       </div>
     </body>
   );
