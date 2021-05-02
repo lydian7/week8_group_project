@@ -11,6 +11,10 @@ const Song = ({selectedSong, audio, setAudio}) => {
       setAudio(tempAudio);
     }
 
+    const handleStop = () => {
+      audio.pause();
+    }
+
     // console.log(selectedSong)
 
 
@@ -29,10 +33,11 @@ const Song = ({selectedSong, audio, setAudio}) => {
             onClick={handlePlay} class="btn btn-primary">Play</button> 
             : <p>Selected song is undefined</p>}
         &nbsp;   
-        {typeof(selectedSong) != "undefined" ? 
+        {/* {typeof(selectedSong) != "undefined" ? 
           <button value={selectedSong.link[1].attributes.href} 
             onClick={handlePlay} class="btn btn-secondary">Pause</button> 
-            : <p>Selected song is undefined</p>}  
+            : <p>Selected song is undefined</p>}   */}
+            <button onClick={handleStop}Stop>Stop</button>
         <br/><br/><br/>    
         <h5 class="card-title">Guess the song!!!</h5>
         <p class="card-text">
