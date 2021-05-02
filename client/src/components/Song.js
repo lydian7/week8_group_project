@@ -18,20 +18,39 @@ const Song = ({selectedSong, audio, setAudio}) => {
 
     // <h1>test</h1>
       
-      <div id="guesssong">
-        <h1>Guess the song!!!</h1>
-        {typeof(selectedSong) != "undefined" ? <img src={selectedSong['im:image'][1].label} alt=""/> : <p>undefined error</p> }
-        <select name="quiz">
-          <option>Guess the song</option>
-          <option>Answer1</option>
-          <option>Answer2</option>
-          <option>Answer3</option>
-          <option>Answer4</option>
-        </select>
-        <button type="submit" value="quiz">Submit</button>
-         {typeof(selectedSong) != "undefined" ? <button value={selectedSong.link[1].attributes.href} onClick={handlePlay}>Play</button> : <p>Selected song is undefined</p>}
-      </div>
+    <>
+    <div class="card">
+    {typeof(selectedSong) != "undefined" ? 
+      <img src={selectedSong['im:image'][1].label} class="card-img-top" alt="..."/> 
+      : <p>undefined error</p> }
+      <div class="card-body">
+        {typeof(selectedSong) != "undefined" ? 
+          <button value={selectedSong.link[1].attributes.href} 
+            onClick={handlePlay} class="btn btn-primary">Play</button> 
+            : <p>Selected song is undefined</p>}
+        &nbsp;   
+        {typeof(selectedSong) != "undefined" ? 
+          <button value={selectedSong.link[1].attributes.href} 
+            onClick={handlePlay} class="btn btn-secondary">Pause</button> 
+            : <p>Selected song is undefined</p>}  
+        <br/><br/><br/>    
+        <h5 class="card-title">Guess the song!!!</h5>
+        <p class="card-text">
+          <select name="quiz" className="dropdown">
+            <option>Guess the song</option>
+            <option>Answer1</option>
+            <option>Answer2</option>
+            <option>Answer3</option>
+            <option>Answer4</option>
+          </select>
+        </p>
 
+        <button type="submit" value="quiz" class="btn btn-primary">Submit</button>
+        
+      </div>
+    </div>
+     
+  </>
   )
 }
 

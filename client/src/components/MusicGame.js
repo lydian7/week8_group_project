@@ -13,7 +13,7 @@ const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong, audio
         <div id="musicgame">
             { selectedSong !== null ? <Song selectedSong={selectedSong} audio={audio} setAudio={setAudio} /> : null} 
             <br/>
-            <button onClick={handleSelectedSong}>Next Song</button>
+            <button onClick={handleSelectedSong} value="nextsong" class="btn btn-secondary">Next Song</button>
             <br/>
         </div>
        

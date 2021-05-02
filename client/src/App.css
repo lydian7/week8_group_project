@@ -1,45 +1,65 @@
-.App{
-    display:flex;
-    justify-content: center;
-    border-style: solid;
-    flex-direction: column;
-}
-
-
-.musiccontainer {
-    display: flex;
-    justify-content: center;
-    border-style: solid;
-}
-
-#appheader {
-    background-color: #282C34;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-#dropdownmenu{
-    justify-content: space-evenly;
-}
-
-#musicgame{
-    display: flex;
-    border-style: solid;
-    align-items: center;
-}
-
-#guesssong{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#footer{
-    display: flex;
-    justify-content: center;
-}
+.App { 
+    display: grid;
+    grid-template-areas: 
+      "header header header"
+      "nav article ads"
+      "footer footer footer";
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-columns: 20% 1fr 30%;
+    grid-gap: 5px;
+    height: 100vh;
+    margin: 0;
+    /* border: solid; */
+    }
+  
+  #pageHeader {
+    grid-area: header;
+    background: goldenrod;
+    text-align: center;
+  
+  }
+  #pageFooter {
+    grid-area: footer;
+    background: goldenrod;
+  }
+  #mainArticle { 
+    grid-area: article;
+    background: goldenrod;   
+    text-align: center;   
+    }
+  #mainNav { 
+    grid-area: nav; 
+    background: goldenrod;
+  
+    }
+  #siteAds { 
+    grid-area: ads; 
+    background: goldenrod;
+    text-align: center;
+    }
+  header, footer, article, nav, div {
+    padding: 20px;
+    /* background: rgb(240, 220, 169); */
+    /* border: groove; */
+    text-align: center;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 
