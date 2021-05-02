@@ -2,18 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const Song = ({selectedSong, audio, setAudio}) => {
 
-  
-
-    const handlePlay = (e) => {
-      console.log(e.target.value)
-      const tempAudio = new Audio(e.target.value)
-      tempAudio.play()
-      setAudio(tempAudio);
-    }
-
-    const handleStop = () => {
-      audio.pause();
-    }
 
     // console.log(selectedSong)
 
@@ -28,16 +16,12 @@ const Song = ({selectedSong, audio, setAudio}) => {
       <img src={selectedSong['im:image'][1].label} class="card-img-top" alt="..."/> 
       : <p>undefined error</p> }
       <div class="card-body">
-        {typeof(selectedSong) != "undefined" ? 
-          <button value={selectedSong.link[1].attributes.href} 
-            onClick={handlePlay} class="btn btn-primary">Play</button> 
-            : <p>Selected song is undefined</p>}
-        &nbsp;   
-        {/* {typeof(selectedSong) != "undefined" ? 
-          <button value={selectedSong.link[1].attributes.href} 
-            onClick={handlePlay} class="btn btn-secondary">Pause</button> 
-            : <p>Selected song is undefined</p>}   */}
-            <button onClick={handleStop}Stop>Stop</button>
+      {typeof(selectedSong) != "undefined" ? <audio
+        controls
+        src={selectedSong.link[1].attributes.href}>
+            Your browser does not support the
+            <code>audio</code> element.
+        </audio> : <p>undefined error</p> } 
         <br/><br/><br/>    
         <h5 class="card-title">Guess the song!!!</h5>
         <p class="card-text">

@@ -9,6 +9,7 @@ const MusicContainer = () => {
     const [selectedFact, setSelectedFact] = useState(null);
     const [factList, setFactList] = useState([]);
     const [audio, setAudio] = useState(null);
+    const [randos, setRandos] = useState([]);
 
     useEffect(() => {
       setSelectedSong(songList[getRandomInt(40)])
@@ -29,6 +30,29 @@ const MusicContainer = () => {
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
       }
+
+    useEffect(() => {
+      const tempList = songList.filter((song) => {
+        return song !== selectedSong;
+      })
+      console.log("templist")
+      console.log(tempList)
+      const newList = [];
+      for(let i=0; i<3; i++){
+        const extractedSong = tempList[getRandomInt(39)]
+        newList.push(extractedSong);
+        const indexToRemove = tempList.indexOf(extractedSong);
+        tempList.splice(indexToRemove, 1);
+      }
+      setRandos(newList);
+    }, [selectedSong])
+
+    console.log(randos);
+    
+
+
+
+    
 
     return(
         <div id="dropdownmenu">
