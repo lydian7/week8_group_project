@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Song = ({selectedSong, audio, setAudio}) => {
+const Song = ({selectedSong, optionList}) => {
 
 
     // console.log(selectedSong)
@@ -13,7 +13,7 @@ const Song = ({selectedSong, audio, setAudio}) => {
     <>
     <div class="card">
     {typeof(selectedSong) != "undefined" ? 
-      <img src={selectedSong['im:image'][1].label} class="card-img-top" alt="..."/> 
+      <img src='https://source.unsplash.com/500x500/?guitar' class="card-img-top" alt="..."/> 
       : <p>undefined error</p> }
       <div class="card-body">
       {typeof(selectedSong) != "undefined" ? <audio
@@ -25,13 +25,16 @@ const Song = ({selectedSong, audio, setAudio}) => {
         <br/><br/><br/>    
         <h5 class="card-title">Guess the song!!!</h5>
         <p class="card-text">
+        {typeof(optionList[0]) != "undefined" ?   
           <select name="quiz" className="dropdown">
             <option>Guess the song</option>
-            <option>Answer1</option>
-            <option>Answer2</option>
-            <option>Answer3</option>
-            <option>Answer4</option>
+            <option>{optionList[0]["im-artist"]}</option>
+            <option>{optionList[1]["im-artist"]}</option>
+            <option>{optionList[2]["im-artist"]}</option>
+            <option>{optionList[3]["im-artist"]}</option>
           </select>
+          : <p>undefined error</p>
+        }
         </p>
 
         <button type="submit" value="quiz" class="btn btn-primary">Submit</button>
