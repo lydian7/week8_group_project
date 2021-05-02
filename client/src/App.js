@@ -4,19 +4,16 @@ import MusicContainer from "./container/MusicContainer"
 function App() {
 
   return (
-    <body>
-      <div className="App">
-        <header id="appheader">
-        <h1>Music App</h1>
-        </header>
-        <div className="musiccontainer">
-        <MusicContainer />
-        </div>
-        <footer id="footer">
-          <h3>MUSIC APP 2021</h3>
-        </footer>
-      </div>
-    </body>
+    <div className="App">
+      <header id="pageHeader">Music App</header>
+      <article id="mainArticle">
+        <MusicContainer /> 
+      </article>
+      <nav id="mainNav">Add new user</nav>
+      
+      <div id="siteAds">Did you know</div>
+      <footer id="pageFooter">Music App @2021</footer>
+    </div>
   );
 }
 

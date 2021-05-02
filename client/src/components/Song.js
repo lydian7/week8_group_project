@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const Song = ({selectedSong, audio, setAudio}) => {
+const Song = ({selectedSong, optionList}) => {
 
-  
-
-    const handlePlay = (e) => {
-      console.log(e.target.value)
-      const tempAudio = new Audio(e.target.value)
-      tempAudio.play()
-      setAudio(tempAudio);
-    }
 
     // console.log(selectedSong)
 
@@ -18,20 +10,39 @@ const Song = ({selectedSong, audio, setAudio}) => {
 
     // <h1>test</h1>
       
-      <div id="guesssong">
-        <h1>Guess the song!!!</h1>
-        {typeof(selectedSong) != "undefined" ? <img src={selectedSong['im:image'][1].label} alt=""/> : <p>undefined error</p> }
-        <select name="quiz">
-          <option>Guess the song</option>
-          <option>Answer1</option>
-          <option>Answer2</option>
-          <option>Answer3</option>
-          <option>Answer4</option>
-        </select>
-        <button type="submit" value="quiz">Submit</button>
-         {typeof(selectedSong) != "undefined" ? <button value={selectedSong.link[1].attributes.href} onClick={handlePlay}>Play</button> : <p>Selected song is undefined</p>}
-      </div>
+    <>
+    <div class="card">
+    {typeof(selectedSong) != "undefined" ? 
+      <img src='https://source.unsplash.com/500x500/?guitar' class="card-img-top" alt="..."/> 
+      : <p>undefined error</p> }
+      <div class="card-body">
+      {typeof(selectedSong) != "undefined" ? <audio
+        controls
+        src={selectedSong.link[1].attributes.href}>
+            Your browser does not support the
+            <code>audio</code> element.
+        </audio> : <p>undefined error</p> } 
+        <br/><br/><br/>    
+        <h5 class="card-title">Guess the song!!!</h5>
+        <p class="card-text">
+        {typeof(optionList[0]) != "undefined" ?   
+          <select name="quiz" className="dropdown">
+            <option>Guess the song</option>
+            <option>{optionList[0]["im-artist"]}</option>
+            <option>{optionList[1]["im-artist"]}</option>
+            <option>{optionList[2]["im-artist"]}</option>
+            <option>{optionList[3]["im-artist"]}</option>
+          </select>
+          : <p>undefined error</p>
+        }
+        </p>
 
+        <button type="submit" value="quiz" class="btn btn-primary">Submit</button>
+        
+      </div>
+    </div>
+     
+  </>
   )
 }
 
