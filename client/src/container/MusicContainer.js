@@ -43,7 +43,7 @@ const MusicContainer = () => {
       const tempList = songList.filter((song) => {
       return song !== selectedSong;
       })
-      const newList = [];
+      let newList = [];
       for(let i=0; i<3; i++){
         const extractedSong = tempList[getRandomInt(39)]
         newList.push(extractedSong);
@@ -51,6 +51,23 @@ const MusicContainer = () => {
         tempList.splice(indexToRemove, 1);
       }
       newList.push(selectedSong);
+
+      // const spliced = newList.splice(getRandomInt(3), 1);
+      // const testList = [...newList, spliced]
+      // newList = testList;
+
+      let currentIndex = newList.length, temporaryValue, randomIndex;
+      // While there remain elements to shuffle...
+      while (0 != currentIndex) {
+        // Pick a remaining element...
+        randomIndex = getRandomInt(3);
+        currentIndex -= 1;
+        // And swap it with the current element.
+        temporaryValue = newList[currentIndex];
+        newList[currentIndex] = newList[randomIndex];
+        newList[randomIndex] = temporaryValue;
+      }
+    
       setOptionList(newList);
     }  
 
