@@ -17,34 +17,22 @@ const MusicContainer = () => {
       fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=40/genre=${selectedGenre}/json`)
       .then(res => res.json())
       .then(data => setSongList(data.feed.entry))
-
-      console.log('setSelected Song use effect')
-      setSelectedSong(songList[getRandomInt(40)]);
     }, [selectedGenre])
 
     useEffect(() => {
-      // console.log('setSelected Song use effect')
-      // setSelectedSong(songList[getRandomInt(40)]);
-
-      const tempList = songList.filter((song) => {
-        return song !== selectedSong;
-        })
-        const newList = [];
-        for(let i=0; i<3; i++){
-          const extractedSong = tempList[getRandomInt(39)]
-          newList.push(extractedSong);
-          const indexToRemove = tempList.indexOf(extractedSong);
-          tempList.splice(indexToRemove, 1);
-        }
-        newList.push(selectedSong);
-        setOptionList(newList);
+      console.log('setSelected Song use effect')
+      setSelectedSong(songList[getRandomInt(40)]);
     }, [songList])
 
     console.log("option list")
     console.log(optionList)
 
+    useEffect(() => {
+      shuffleSongs();
+    }, [selectedSong])
+
     const handleGenreChange = (e) => { // ==>>> NEED TO PREVENT DEFAULT VALUE FROM PASSING 0
-        setSelectedGenre(e.target.value)    
+        setSelectedGenre(e.target.value)
     };
 
     function getRandomInt(max) {
@@ -115,7 +103,7 @@ const MusicContainer = () => {
             <option value="14">Pop</option>
             <option value="11">Jazz</option>
         </select>
-        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong} audio={audio} setAudio={setAudio} optionList={optionList}/>
+        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong} audio={audio} setAudio={setAudio} optionList={optionList} setOptionList={setOptionList}/>
         </div>
     )
 }
