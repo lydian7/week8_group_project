@@ -3,9 +3,6 @@ import React, { useState, useEffect } from "react";
 const Song = ({selectedSong, optionList}) => {
 
 
-    // console.log(selectedSong)
-
-
   return (
 
     // <h1>test</h1>
@@ -31,7 +28,7 @@ const Song = ({selectedSong, optionList}) => {
             <option>{optionList[0]["im:artist"].label}</option>
             <option>{optionList[1]["im:artist"].label}</option>
             <option>{optionList[2]["im:artist"].label}</option>
-            <option>{selectedSong["im:artist"].label}</option>
+            <option>{optionList[3]["im:artist"].label}</option>
           </select>
           : <p>undefined error</p>
         }
