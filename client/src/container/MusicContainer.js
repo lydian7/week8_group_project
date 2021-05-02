@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import DidYouKnow from "../components/DidYouKnow";
 import MusicGame from "../components/MusicGame";
 
 const MusicContainer = () => {
@@ -10,6 +11,8 @@ const MusicContainer = () => {
     const [selectedFact, setSelectedFact] = useState(null);
     const [factList, setFactList] = useState([]);
     const [audio, setAudio] = useState(null);
+    const [userScore, setUserScore] = useState(0);
+   
     
 
     useEffect(() => {
@@ -34,6 +37,16 @@ const MusicContainer = () => {
     const handleGenreChange = (e) => { // ==>>> NEED TO PREVENT DEFAULT VALUE FROM PASSING 0
         setSelectedGenre(e.target.value)
     };
+
+    
+
+    // const handleUserScore = (e) => {
+    //   e.preventDefault()
+    //   if (e.target.value == selectedSong["im:artist"].label){
+    //     setUserScore(userScore + 1)
+    //   }
+    //   console.log(`this is the userPick: ${e.target.value}`);
+    // }
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -120,7 +133,8 @@ const MusicContainer = () => {
             <option value="14">Pop</option>
             <option value="11">Jazz</option>
         </select>
-        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong} audio={audio} setAudio={setAudio} optionList={optionList} setOptionList={setOptionList}/>
+        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong} audio={audio} setAudio={setAudio} optionList={optionList} setOptionList={setOptionList} />
+        <DidYouKnow  userScore={userScore}/>
         </div>
     )
 }
