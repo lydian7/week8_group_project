@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-const Song = ({selectedSong}) => {
+const Song = ({selectedSong, audio, setAudio}) => {
 
   
 
     const handlePlay = (e) => {
-        console.log(e.target.value)
-        const audio = new Audio(e.target.value)
-        audio.play()
+      console.log(e.target.value)
+      const tempAudio = new Audio(e.target.value)
+      tempAudio.play()
+      setAudio(tempAudio);
     }
 
-    console.log(selectedSong)
+    // console.log(selectedSong)
 
 
   return (

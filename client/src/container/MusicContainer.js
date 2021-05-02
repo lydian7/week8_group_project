@@ -8,6 +8,7 @@ const MusicContainer = () => {
     const [selectedGenre, setSelectedGenre] = useState(0);
     const [selectedFact, setSelectedFact] = useState(null);
     const [factList, setFactList] = useState([]);
+    const [audio, setAudio] = useState(null);
 
     useEffect(() => {
       setSelectedSong(songList[getRandomInt(40)])
@@ -29,8 +30,6 @@ const MusicContainer = () => {
         return Math.floor(Math.random() * max);
       }
 
-    
-
     return(
         <div id="dropdownmenu">
         <select onChange={handleGenreChange}>
@@ -39,7 +38,7 @@ const MusicContainer = () => {
             <option value="14">Pop</option>
             <option value="11">Jazz</option>
         </select>
-        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong}/>
+        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong} audio={audio} setAudio={setAudio}/>
         </div>
     )
 }
