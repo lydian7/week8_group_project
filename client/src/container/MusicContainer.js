@@ -40,13 +40,12 @@ const MusicContainer = () => {
 
     
 
-    // const handleUserScore = (e) => {
-    //   e.preventDefault()
-    //   if (e.target.value == selectedSong["im:artist"].label){
-    //     setUserScore(userScore + 1)
-    //   }
-    //   console.log(`this is the userPick: ${e.target.value}`);
-    // }
+    const handleUserScore = (e) => {
+      if (e.target.value == selectedSong["im:artist"].label){
+        setUserScore(userScore + 1)
+      }
+      console.log(`this is the userPick: ${e.target.value}`);
+    }
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -133,7 +132,7 @@ const MusicContainer = () => {
             <option value="14">Pop</option>
             <option value="11">Jazz</option>
         </select>
-        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong} audio={audio} setAudio={setAudio} optionList={optionList} setOptionList={setOptionList} />
+        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong} audio={audio} setAudio={setAudio} optionList={optionList} setOptionList={setOptionList} handleUserScore={handleUserScore} />
         <DidYouKnow  userScore={userScore}/>
         </div>
     )
