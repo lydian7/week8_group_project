@@ -28,10 +28,10 @@ const Song = ({selectedSong, optionList}) => {
         {typeof(optionList[0]) != "undefined" ?   
           <select name="quiz" className="dropdown">
             <option>Guess the song</option>
-            <option>{optionList[0]["im-artist"]}</option>
-            <option>{optionList[1]["im-artist"]}</option>
-            <option>{optionList[2]["im-artist"]}</option>
-            <option>{optionList[3]["im-artist"]}</option>
+            <option>{optionList[0]["im:artist"].label}</option>
+            <option>{optionList[1]["im:artist"].label}</option>
+            <option>{optionList[2]["im:artist"].label}</option>
+            <option>{selectedSong["im:artist"].label}</option>
           </select>
           : <p>undefined error</p>
         }

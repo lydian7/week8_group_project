@@ -13,16 +13,35 @@ const MusicContainer = () => {
     
 
     useEffect(() => {
-      setSelectedSong(songList[getRandomInt(40)]);
-    }, [songList])
-
-
-
-    useEffect(() => {
+      console.log('fetch api and set songlist use effect, listening to selectedGenre')
       fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=40/genre=${selectedGenre}/json`)
       .then(res => res.json())
       .then(data => setSongList(data.feed.entry))
+
+      console.log('setSelected Song use effect')
+      setSelectedSong(songList[getRandomInt(40)]);
     }, [selectedGenre])
+
+    useEffect(() => {
+      // console.log('setSelected Song use effect')
+      // setSelectedSong(songList[getRandomInt(40)]);
+
+      const tempList = songList.filter((song) => {
+        return song !== selectedSong;
+        })
+        const newList = [];
+        for(let i=0; i<3; i++){
+          const extractedSong = tempList[getRandomInt(39)]
+          newList.push(extractedSong);
+          const indexToRemove = tempList.indexOf(extractedSong);
+          tempList.splice(indexToRemove, 1);
+        }
+        newList.push(selectedSong);
+        setOptionList(newList);
+    }, [songList])
+
+    console.log("option list")
+    console.log(optionList)
 
     const handleGenreChange = (e) => { // ==>>> NEED TO PREVENT DEFAULT VALUE FROM PASSING 0
         setSelectedGenre(e.target.value)    
@@ -32,13 +51,9 @@ const MusicContainer = () => {
         return Math.floor(Math.random() * max);
       }
 
-    useEffect(() => {
-
-      setOptionList([selectedSong]);
-      console.log('selected song')
-      console.log(selectedSong)
+    const shuffleSongs = () => {
       const tempList = songList.filter((song) => {
-        return song !== selectedSong;
+      return song !== selectedSong;
       })
       const newList = [];
       for(let i=0; i<3; i++){
@@ -47,29 +62,50 @@ const MusicContainer = () => {
         const indexToRemove = tempList.indexOf(extractedSong);
         tempList.splice(indexToRemove, 1);
       }
-      
+      newList.push(selectedSong);
       setOptionList(newList);
+    }  
 
-      const shuffleList = optionList;
+    // useEffect(() => {
 
-      let currentIndex = shuffleList.length, temporaryValue, randomIndex;
-      // While there remain elements to shuffle...
-      while (0 != currentIndex) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        // And swap it with the current element.
-        temporaryValue = shuffleList[currentIndex];
-        shuffleList[currentIndex] = shuffleList[randomIndex];
-        shuffleList[randomIndex] = temporaryValue;
-      }
+    //   // setOptionList([selectedSong]);
+  
+    //   const tempList = songList.filter((song) => {
+    //     return song !== selectedSong;
+    //   })
+    //   const newList = [];
+    //   for(let i=0; i<3; i++){
+    //     const extractedSong = tempList[getRandomInt(39)]
+    //     newList.push(extractedSong);
+    //     const indexToRemove = tempList.indexOf(extractedSong);
+    //     tempList.splice(indexToRemove, 1);
+    //   }
+      
+    //   setOptionList(newList);
+    //   // console.log(newList);
+    //   console.log(optionList);
+
+    //   // const shuffleList = optionList;
+
+    //   // let currentIndex = shuffleList.length, temporaryValue, randomIndex;
+    //   // // While there remain elements to shuffle...
+    //   // while (0 != currentIndex) {
+    //   //   // Pick a remaining element...
+    //   //   randomIndex = Math.floor(Math.random() * currentIndex);
+    //   //   currentIndex -= 1;
+    //   //   // And swap it with the current element.
+    //   //   temporaryValue = shuffleList[currentIndex];
+    //   //   shuffleList[currentIndex] = shuffleList[randomIndex];
+    //   //   shuffleList[randomIndex] = temporaryValue;
+    //   // }
     
-      setOptionList(shuffleList);
+    //   // setOptionList(shuffleList);
+    //   // console.log(shuffleList);
 
-    }, [songList])
+    // }, [selectedSong])
     
-    console.log('option list')
-    console.log(optionList);
+    // console.log('option list')
+    // console.log(optionList);
 
     return(
         <div id="dropdownmenu">
