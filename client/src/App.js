@@ -1,5 +1,7 @@
 import './App.css';
 import MusicContainer from "./container/MusicContainer"
+import DidYouKnow from "./components/DidYouKnow";
+import MusicGame from "./components/MusicGame";
 
 function App() {
 
@@ -11,7 +13,7 @@ function App() {
       </article>
       <nav id="mainNav">Add new user</nav>
       
-      <div id="siteAds">Did you know</div>
+      <div id="musicFacts">Did you know</div>
       <footer id="pageFooter">Music App @2021</footer>
     </div>
   );

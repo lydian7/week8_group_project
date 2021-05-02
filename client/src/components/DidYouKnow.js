@@ -1,4 +1,7 @@
 import React from "react";
+import Song from "../components/Song";
+import MusicGame from "../components/MusicGame";
+
 
 const DidYouKnow = ({userScore}) => {
   
