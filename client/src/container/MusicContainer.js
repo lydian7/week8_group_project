@@ -95,6 +95,10 @@ const MusicContainer = () => {
     })
     },[]);
     console.log("leaderBoard", leaderBoard);
+
+    const leaderBoardSorted = leaderBoard.sort((player1, player2) => {
+      return player2.score - player1.score
+    })
     
 
   return(
@@ -127,7 +131,7 @@ const MusicContainer = () => {
               setCount={setCount}
               /> : null }
 
-              { game && count === 5 ? <EndGame /> : null}
+              { game && count === 5 ? <EndGame userScore={userScore}/> : null}
 
             </article>
           </div>
@@ -136,8 +140,8 @@ const MusicContainer = () => {
               Leader Board:
               <br/>
               {
-                leaderBoard.map((player, index) => {
-                return ( <p key={index}>{player.name} : {player.score}</p>)})
+                leaderBoardSorted.map((player, index) => {
+                return ( <p key={index}>{index + 1}. {player.name} : {player.score}</p>)})
               }
               <br/>
             </nav>

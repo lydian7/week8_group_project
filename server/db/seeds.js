@@ -39,14 +39,14 @@ db.facts.insertMany ([
 db.userscore.insertMany ([
     {
         name: "Martin",
-        score: 0 
+        score: 10 
     },
     {
         name: "Ahmet",
-        score: 0 
+        score: 7 
     },
     {
         name: "Pooja",
-        score: 0 
+        score: 15
     }  
 ]);

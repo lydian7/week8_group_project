@@ -1,9 +1,19 @@
 import React from "react";
 
-const EndGame = () => {
-  
+const EndGame = ({userScore}) => {
+    
+
+    
+
+    const handleFinish = () => {
+      
+    }
+
     return(
+        <div>
         <p>endgame</p>
+        <button onClick={handleFinish}>Finish</button>
+        </div>
     )
 }
 

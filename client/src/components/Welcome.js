@@ -12,7 +12,7 @@ const Welcome= ({game, setGame}) => {
          <h1>welcome</h1>
         <p><strong>Select a genre to start!!!</strong> </p>
         <button onClick={handleGame}>Play!</button> 
-        <img id="app-loader" src="images/spinner.png" /> 
+        <img id="app-loader" src="images/spinner1.png" /> 
         </div>
       
     
