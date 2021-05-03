@@ -3,7 +3,7 @@ import DidYouKnow from "../components/DidYouKnow";
 import EndGame from "../components/EndGame";
 import MusicGame from "../components/MusicGame";
 
-import {getUserScore, } from "./Music_Service";
+import {getUserScore, updateUserScore} from "./Music_Service";
 
 import Welcome from "../components/Welcome";
 
@@ -20,7 +20,16 @@ const MusicContainer = () => {
     const [reset, setReset] = useState(false);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     
-    console.log("game", game);
+    console.log("main container selectedPlayer", selectedPlayer);
+
+    useEffect(()=>{
+      getUserScore()
+      .then((data)=>{
+      // console.log(userScore);
+      setLeaderBoard(data)
+      })
+      },[]);
+      // console.log("leaderBoard", leaderBoard);
    
     useEffect(() => {
       console.log('fetch api and set songlist use effect, listening to selectedGenre')
@@ -89,20 +98,22 @@ const MusicContainer = () => {
       setOptionList(newList);
     }  
 
-    useEffect(()=>{
-    getUserScore()
-    .then((data)=>{
-    // console.log(userScore);
-    setLeaderBoard(data)
-    })
-    },[]);
-    console.log("leaderBoard", leaderBoard);
-
     const leaderBoardSorted = leaderBoard.sort((player1, player2) => {
       return player2.score - player1.score
     })
 
     // console.log("sortedleaderboard", leaderBoardSorted)
+
+    const updateUser = updatedUser => {
+      // req to server to update booking in DB
+      updateUserScore(updatedUser);
+  
+      // update locally
+      const updatedCustomerIndex = leaderBoard.findIndex(user => user._id === updatedUser._id);
+      const updatedLeaderBoard = [...leaderBoard];
+      updatedLeaderBoard[updatedCustomerIndex] = updatedUser;
+      setLeaderBoard(updatedLeaderBoard);
+    };
     
 
   return(
@@ -130,7 +141,7 @@ const MusicContainer = () => {
               setCount={setCount}
               /> : null }
 
-              { game && count === 5 ? <EndGame userScore={userScore} setReset={setReset}/> : null}
+              { game && count === 5 ? <EndGame userScore={userScore} setReset={setReset} selectedPlayer={selectedPlayer} leaderBoard={leaderBoard} updateUser={updateUser}/> : null}
 
             </article>
           </div>

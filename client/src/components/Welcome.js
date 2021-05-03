@@ -31,7 +31,7 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
               <select onChange={handleSelectedPlayer}>
                 <option disabled selected>Select a Player</option>
                 {leaderBoard.map((player) => {
-                  return <option key={player.id} value={player.id}>{player.name}</option>
+                  return <option key={player._id} value={player._id}>{player.name}</option>
                 })}
               </select>
         </div>

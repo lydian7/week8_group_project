@@ -9,6 +9,15 @@ export const getUserScore = () => {
   return fetch(userScoreUrl).then(res => res.json())
 }
 
+export const updateUserScore = (user) => {
+  return fetch(userScoreUrl + user._id, {
+    method: 'PUT',
+    body: JSON.stringify(user),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json());
+}
 
 export const postUserScore = (payload) => {
   return fetch(userScoreUrl, {
@@ -18,6 +27,8 @@ export const postUserScore = (payload) => {
   })
   .then(res => res.json())
 }
+
+
 
 
 
