@@ -111,6 +111,7 @@ return(
         
         </div>
         <nav id="mainNav">User Score: {userScore}</nav>
+        
       <div id="musicFacts">
         <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} />
       </div>
