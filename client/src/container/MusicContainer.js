@@ -121,10 +121,11 @@ const MusicContainer = () => {
               songList={songList} 
               selectedGenre={selectedGenre} 
               getRandomInt={getRandomInt} 
+              userScore={userScore}
               selectedSong={selectedSong} 
               setSelectedSong={setSelectedSong} 
               optionList={optionList} 
-              handleUserScore={handleUserScore} 
+               setUserScore={setUserScore}
               count={count}
               setCount={setCount}
               /> : null }

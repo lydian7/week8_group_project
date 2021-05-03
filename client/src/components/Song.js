@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 
-const Song = ({selectedSong, optionList, handleUserScore, count, setCount, userScore}) => {
+const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount, userScore, setUserScore, setSelectedSong}) => {
 
 
 
