@@ -1,3 +1,20 @@
+body {
+  height: 100%;
+  margin: 0;
+
+  font-family: 'New Tegomin', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: linear-gradient(to right, rgb(218, 165, 32), rgba(240, 127, 7, 0)), linear-gradient(to left, rgb(218, 165, 32), rgba(240, 127, 7, 0)), 
+  linear-gradient(to top, rgb(218, 165, 32), rgba(240, 127, 7, 0));
+  background-repeat: no-repeat, no-repeat;
+  background-position: left, right;
+  background-size: 20%;
+  box-shadow: 0 0 4px 4px rgb(84, 117, 245) inset;
+
+}
+
 .music-container { 
   display: grid;
   grid-template-areas: 
