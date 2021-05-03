@@ -1,16 +1,30 @@
 import React, { useState, useEffect } from "react";
 
-const Song = ({selectedSong, optionList, handleUserScore, count, setCount}) => {
+
+
+const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount, userScore, setUserScore, setSelectedSong}) => {
+
+
 
   const [selectValue, setSelectValue] = useState("");
   // const [count, setCount] = useState(0);
 
   console.log("count", count);
 
-  const handleCount = () => {
+  // const handleCount = () => {
+  //   if(count < 5){
+  //     setCount(count + 1);
+  //   }
+  // }
+
+  const handleUserScore = (e) => {
+    if (e.target.value == selectedSong["im:artist"].label){
+      setUserScore(userScore + 1)
+    }
     if(count < 5){
       setCount(count + 1);
     }
+    
   }
 
   const handleChange = (e) => {
@@ -21,6 +35,15 @@ const Song = ({selectedSong, optionList, handleUserScore, count, setCount}) => {
   if(optionList.includes(undefined)){ // ===> hack for undefined or null errors
     return null;
   }
+
+  const handleSelectedSong = () => {
+    setSelectedSong(songList[getRandomInt(39)]);
+  }
+
+  // const handleSubmit = () => {
+  //   handleCount()
+  //   handleUserScore()
+  // }
 
 
   return (
@@ -51,7 +74,7 @@ const Song = ({selectedSong, optionList, handleUserScore, count, setCount}) => {
             && optionList.length>3)  ?   
 
               <select name="quiz" className="dropdown" onChange={handleChange}>
-                <option>Select Answer</option>
+                <option defaultValue >Select Answer</option>
                 <option value={optionList[0]["im:artist"].label}>{optionList[0]["im:artist"].label}</option>
                 <option value={optionList[1]["im:artist"].label}>{optionList[1]["im:artist"].label}</option>
                 <option value={optionList[2]["im:artist"].label}>{optionList[2]["im:artist"].label}</option>
@@ -61,8 +84,8 @@ const Song = ({selectedSong, optionList, handleUserScore, count, setCount}) => {
               : <p>undefined error</p>
 
             }
-            <button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore, handleCount}>Submit</button>
-         
+            <button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore}>Submit</button>
+            <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button>
         
           </p>
       </div>

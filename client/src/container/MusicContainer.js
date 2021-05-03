@@ -20,6 +20,7 @@ const MusicContainer = () => {
     const [reset, setReset] = useState(false);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     
+
     console.log("main container selectedPlayer", selectedPlayer);
 
     useEffect(()=>{
@@ -30,6 +31,10 @@ const MusicContainer = () => {
       })
       },[]);
       // console.log("leaderBoard", leaderBoard);
+
+    console.log("game", game);
+
+
    
     useEffect(() => {
       console.log('fetch api and set songlist use effect, listening to selectedGenre')
@@ -57,12 +62,12 @@ const MusicContainer = () => {
     //     setSelectedGenre(e.target.value)
     // };
 
-    const handleUserScore = (e) => {
-      if (e.target.value == selectedSong["im:artist"].label){
-        setUserScore(userScore + 1)
-      }
+    // const handleUserScore = (e) => {
+    //   if (e.target.value == selectedSong["im:artist"].label){
+    //     setUserScore(userScore + 1)
+    //   }
       
-    }
+    // }
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -125,6 +130,7 @@ const MusicContainer = () => {
           <div id="mainArticle">
 
         
+
             <article>
 
               { !game ? <Welcome game={game} setGame={setGame} setSelectedGenre={setSelectedGenre} setSelectedPlayer={setSelectedPlayer} leaderBoard={leaderBoard}/> : null} 
@@ -133,15 +139,20 @@ const MusicContainer = () => {
               songList={songList} 
               selectedGenre={selectedGenre} 
               getRandomInt={getRandomInt} 
+              userScore={userScore}
               selectedSong={selectedSong} 
               setSelectedSong={setSelectedSong} 
               optionList={optionList} 
-              handleUserScore={handleUserScore} 
+               setUserScore={setUserScore}
               count={count}
               setCount={setCount}
               /> : null }
 
+
               { game && count === 5 ? <EndGame userScore={userScore} setReset={setReset} selectedPlayer={selectedPlayer} leaderBoard={leaderBoard} updateUser={updateUser}/> : null}
+
+              
+
 
             </article>
           </div>
@@ -160,6 +171,7 @@ const MusicContainer = () => {
 
         <div id="musicFacts">
           <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
+
         </div>
         <footer id="pageFooter">Music App @2021</footer>  
       </div>

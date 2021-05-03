@@ -6,9 +6,22 @@ function DidYouKnow({selectedGenre}){
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const POP = "POP";
-  const JAZZ = "JAZZ";
-  const ROCK = "ROCK";
+  // const [genreDisplay, setGenreDisplay] = useState(null);
+
+  let GenreDisplay = null;
+    
+    if (selectedGenre == 21){
+      GenreDisplay = "Rock"
+    }
+    if (selectedGenre == 14){
+      GenreDisplay = "Pop"
+    }
+    if (selectedGenre == 11){
+      GenreDisplay = "Jazz"
+    }
+  
+
+  
 
   
   function getRandomInt(mn,mx){
@@ -47,11 +60,13 @@ function DidYouKnow({selectedGenre}){
   }, [])
 
   useEffect(() => {
-  getFactsByGenre();
+  getFactsByGenre()
+ 
     
   }, [selectedGenre])
 
-  
+  console.log("genreDisplay", GenreDisplay)
+  console.log("selectedGenre", selectedGenre)
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -61,7 +76,7 @@ function DidYouKnow({selectedGenre}){
     return (
     <>
     <h2>Did you know?</h2>
-    <h2>{selectedGenre} Facts</h2>
+    <h2>{GenreDisplay} Facts</h2>
       <ul>
       <li> {factsList[getRandomInt(0,4)]} </li>
       </ul>
