@@ -3,7 +3,7 @@ import DidYouKnow from "../components/DidYouKnow";
 import EndGame from "../components/EndGame";
 import MusicGame from "../components/MusicGame";
 
-import {getUserScore, } from "./Music_Service";
+import {getUserScore, updateUserScore} from "./Music_Service";
 
 import Welcome from "../components/Welcome";
 
@@ -17,8 +17,23 @@ const MusicContainer = () => {
     const [leaderBoard, setLeaderBoard] = useState([]);
     const [game, setGame] = useState(false);
     const [count, setCount] = useState(0);
+    const [reset, setReset] = useState(false);
+    const [selectedPlayer, setSelectedPlayer] = useState(null);
     
+
+    console.log("main container selectedPlayer", selectedPlayer);
+
+    useEffect(()=>{
+      getUserScore()
+      .then((data)=>{
+      // console.log(userScore);
+      setLeaderBoard(data)
+      })
+      },[]);
+      // console.log("leaderBoard", leaderBoard);
+
     console.log("game", game);
+
 
    
     useEffect(() => {
@@ -43,9 +58,9 @@ const MusicContainer = () => {
       shuffleSongs();
     }, [selectedSong])
 
-    const handleGenreChange = (e) => { // ==>>> NEED TO PREVENT DEFAULT VALUE FROM PASSING 0
-        setSelectedGenre(e.target.value)
-    };
+    // const handleGenreChange = (e) => { // ==>>> NEED TO PREVENT DEFAULT VALUE FROM PASSING 0
+    //     setSelectedGenre(e.target.value)
+    // };
 
     // const handleUserScore = (e) => {
     //   if (e.target.value == selectedSong["im:artist"].label){
@@ -88,34 +103,37 @@ const MusicContainer = () => {
       setOptionList(newList);
     }  
 
-    useEffect(()=>{
-    getUserScore()
-    .then((data)=>{
-    // console.log(userScore);
-    setLeaderBoard(data)
+    const leaderBoardSorted = leaderBoard.sort((player1, player2) => {
+      return player2.score - player1.score
     })
-    },[]);
-    console.log("leaderBoard", leaderBoard);
+
+    // console.log("sortedleaderboard", leaderBoardSorted)
+
+    const updateUser = updatedUser => {
+      // req to server to update booking in DB
+      updateUserScore(updatedUser);
+  
+      // update locally
+      const updatedCustomerIndex = leaderBoard.findIndex(user => user._id === updatedUser._id);
+      const updatedLeaderBoard = [...leaderBoard];
+      updatedLeaderBoard[updatedCustomerIndex] = updatedUser;
+      setLeaderBoard(updatedLeaderBoard);
+    };
     
 
   return(
 
       <div className="music-container">
-        <header id="pageHeader">Music Quiz</header>
+          <header id="pageHeader">
+            <p>Music Quiz</p>
+          </header>
           <div id="mainArticle">
-            <div id="dropdownmenu">
-              <select name="_selGenre" onChange={handleGenreChange}>
-                <option>Select Genre</option> 
-                <option value="21">Rock</option>
-                <option value="14">Pop</option>
-                <option value="11">Jazz</option>
-              </select>
-            </div>
+
         
 
             <article>
 
-              { !game ? <Welcome game={game} setGame={setGame}/> : null} 
+              { !game ? <Welcome game={game} setGame={setGame} setSelectedGenre={setSelectedGenre} setSelectedPlayer={setSelectedPlayer} leaderBoard={leaderBoard}/> : null} 
 
               { game && count < 5 ? <MusicGame 
               songList={songList} 
@@ -130,7 +148,11 @@ const MusicContainer = () => {
               setCount={setCount}
               /> : null }
 
-              { game && count === 5 ? <EndGame userScore={userScore}/> : null}
+
+              { game && count === 5 ? <EndGame userScore={userScore} setReset={setReset} selectedPlayer={selectedPlayer} leaderBoard={leaderBoard} updateUser={updateUser}/> : null}
+
+              
+
 
             </article>
           </div>
@@ -138,10 +160,12 @@ const MusicContainer = () => {
             <nav id="mainNav">
               Leader Board:
               <br/>
+              <ol>
               {
-                leaderBoard.map((player, index) => {
-                return ( <p key={index}>{player.name} : {player.score}</p>)})
+                leaderBoardSorted.map((player, index) => {
+                return ( <li key={index}>{player.name} : {player.score}</li>)})
               }
+              </ol>
               <br/>
             </nav>
 
