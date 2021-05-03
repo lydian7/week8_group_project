@@ -13,7 +13,6 @@ const MusicContainer = () => {
     const [audio, setAudio] = useState(null);
     const [userScore, setUserScore] = useState(0);
    
-    
 
     useEffect(() => {
       console.log('fetch api and set songlist use effect, listening to selectedGenre')
@@ -38,8 +37,6 @@ const MusicContainer = () => {
         setSelectedGenre(e.target.value)
     };
 
-    
-
     const handleUserScore = (e) => {
       if (e.target.value == selectedSong["im:artist"].label){
         setUserScore(userScore + 1)
@@ -49,7 +46,7 @@ const MusicContainer = () => {
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
-      }
+    }
 
     const shuffleSongs = () => {
       const tempList = songList.filter((song) => {
@@ -125,16 +122,31 @@ const MusicContainer = () => {
     // console.log(optionList);
 
     return(
+      <>
         <div id="dropdownmenu">
-        <select onChange={handleGenreChange}>
+        <select name="_selGenre" onChange={handleGenreChange}>
             <option>All Genres</option> 
             <option value="21">Rock</option>
             <option value="14">Pop</option>
             <option value="11">Jazz</option>
         </select>
-        <MusicGame songList={songList} selectedGenre={selectedGenre} getRandomInt={getRandomInt} selectedSong={selectedSong} setSelectedSong={setSelectedSong} audio={audio} setAudio={setAudio} optionList={optionList} setOptionList={setOptionList} handleUserScore={handleUserScore} />
-        <DidYouKnow  userScore={userScore}/>
+        <MusicGame 
+          songList={songList} 
+          selectedGenre={selectedGenre} 
+          getRandomInt={getRandomInt} 
+          selectedSong={selectedSong} 
+          setSelectedSong={setSelectedSong} 
+          audio={audio} 
+          setAudio={setAudio} 
+          optionList={optionList} 
+          setOptionList={setOptionList} 
+          handleUserScore={handleUserScore} /> 
+        
         </div>
+        {/* <div id="musicFacts">
+          <DidYouKnow  userScore={userScore}/></div> */}
+        
+        </>
     )
 }
 

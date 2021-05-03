@@ -11,11 +11,34 @@
     margin: 0;
     /* border: solid; */
     }
+
+    h1 {
+      font-family: 'Monoton', cursive;
+      font-size: 4em;
+      margin: 0;
+      text-align: center;
+    }
+    
+    h2 {
+      color: blue;
+    }
+    
+    h3 {
+      margin: 5px;
+      color: #333;
+    }
+    
+    h4 {
+      margin: 5px;
+      color: grey;
+    }  
   
   #pageHeader {
     grid-area: header;
     background: goldenrod;
     text-align: center;
+    font-family: 'Monoton', cursive;
+    font-size: 30px; 
   
   }
   #pageFooter {
@@ -30,12 +53,18 @@
   #mainNav { 
     grid-area: nav; 
     background: goldenrod;
+    font-family: 'Monoton', cursive;
+    font-size: 30px;
+    color: brown;
+    
   
     }
-  #siteAds { 
+  #musicFacts { 
     grid-area: ads; 
     background: goldenrod;
     text-align: center;
+    font-family: 'Monoton', cursive;
+    font-size: 20px; 
     }
   header, footer, article, nav, div {
     padding: 20px;
@@ -64,8 +93,9 @@
   }
 
   .card-img-top {
-    height: 200px;
-    width: 200px;
-    align-items: center;
+    height: 300px;
+    width: 300px;
+    /* text-align: center; */
+    /* align-items: center; */
   }
 
