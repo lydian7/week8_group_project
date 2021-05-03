@@ -17,7 +17,8 @@ const MusicContainer = () => {
     const [endGame, setEndGame] = useState(false);
     const [quit, setQuit] = useState(false);
     
-
+    console.log("game", game);
+    console.log("endGame", endGame);
    
 
     useEffect(() => {
@@ -29,14 +30,14 @@ const MusicContainer = () => {
     }, [selectedGenre])
 
     useEffect(() => {
-      console.log('setSelected Song use effect')
+      // console.log('setSelected Song use effect')
       setSelectedSong(songList[getRandomInt(39)]);
     }, [songList])
 
-    console.log('selectedGenre is:')
-    console.log(selectedGenre)
-    console.log("option list is:")
-    console.log(optionList)
+    // console.log('selectedGenre is:')
+    // console.log(selectedGenre)
+    // console.log("option list is:")
+    // console.log(optionList)
 
     useEffect(() => {
       shuffleSongs();
@@ -61,7 +62,7 @@ const MusicContainer = () => {
       const tempList = songList.filter((song) => {
       return song !== selectedSong;
       })
-      console.log("tempList", tempList)
+      // console.log("tempList", tempList)
       let newList = [];
       for(let i=0; i<3; i++){
         const extractedSong = tempList[getRandomInt(tempList.length - 1)]
@@ -100,7 +101,7 @@ return(
         </select>
         
           <article>
-          { game === false ? <WelcomEnd game={game} setGame={setGame} userScore={userScore} endGame={endGame} setEndGame={setEndGame}/> : <MusicGame 
+          { !game ? <WelcomEnd game={game} setGame={setGame} userScore={userScore} endGame={endGame} setEndGame={setEndGame}/> : <MusicGame 
         
         songList={songList} 
         selectedGenre={selectedGenre} 

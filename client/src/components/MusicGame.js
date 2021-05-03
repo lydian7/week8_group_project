@@ -7,6 +7,8 @@ const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong, audio
       setSelectedSong(songList[getRandomInt(39)]);
     }
 
+    console.log()
+
 
 
     return(

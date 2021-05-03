@@ -8,9 +8,9 @@ const Song = ({selectedSong, optionList, handleUserScore, setEndGame}) => {
   console.log("count", count);
 
   const handleCount = () => {
-    if(count <= 5){
+    if(count < 5){
       setCount(count + 1);
-    } else if(count ==5){
+    } else if(count == 5){
       setEndGame(true);
     }
   }
