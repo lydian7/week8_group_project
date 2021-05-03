@@ -112,7 +112,7 @@ return(
         </div>
         <nav id="mainNav">User Score: {userScore}</nav>
       <div id="musicFacts">
-        <DidYouKnow  userScore={userScore} />
+        <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} />
       </div>
       <footer id="pageFooter">Music App @2021</footer>
         
