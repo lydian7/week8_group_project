@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const Song = ({selectedSong, optionList, handleUserScore, setEndGame, count, setCount, songList, getRandomInt, setSelectedSong}) => {
+
+const Song = ({selectedSong, optionList, handleUserScore, count, setCount}) => {
+
 
   const [selectValue, setSelectValue] = useState("");
   // const [count, setCount] = useState(0);
