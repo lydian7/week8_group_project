@@ -3,14 +3,6 @@ import React, { useState, useEffect } from 'react';
 function DidYouKnow(){
     const [factsList, setFactsList] = useState([]);
 
-    // useEffect(() => {
-    //     console.log('fetch did you know api and showing facts');
-    //     fetch(`http://localhost:5000/api/musicfacts`)
-    //     .then(res => res.json())
-    //     .then(data => setFactsList(data.facts));
-    //     //console.log(data.facts);
-    // },[factsList]);
-
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -18,12 +10,7 @@ function DidYouKnow(){
   const JAZZ = "JAZZ";
   const ROCK = "ROCK";
 
-  /**
-   * Function to get the integer random number
-   * @param {} mn 
-   * @param {*} mx 
-   * @returns 
-   */
+  
   function getRandomInt(mn,mx){
     const min = mn;
     const max = mx;
@@ -31,11 +18,7 @@ function DidYouKnow(){
     return Math.floor(rand);
   }
 
-  /**
-   * Function to get the Genre type
-   * @param {*} genreType 
-   * @returns 
-   */
+  
   function getGenreType(genreType){
       if(genreType.toUpperCase()===POP){
           return POP;
@@ -51,9 +34,7 @@ function DidYouKnow(){
       }
   }
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
+  
   useEffect(() => {
     fetch("http://localhost:5000/api/musicfacts")
       .then(res => res.json())
@@ -63,9 +44,7 @@ function DidYouKnow(){
           console.log("result = "+result);
           setItems(result);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        
         (error) => {
           setIsLoaded(true);
           setError(error);
@@ -101,19 +80,8 @@ function DidYouKnow(){
   }
     
 
-    // return(
-    //     <div>
-    //         <h2>Did you know?</h2>
-    //         <p>factslist 
-    //         {factsList.map(item => (
-    //             <li>
-    //                 {item.facts}
-    //             </li>
-    //             ))}
-
-    //         </p>
-    //     </div>
-    // )
+  
+    
    
 }
 export default DidYouKnow;

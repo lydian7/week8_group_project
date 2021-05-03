@@ -12,7 +12,7 @@ const Song = ({selectedSong, optionList, handleUserScore}) => {
 
   return (
 
-    // <h1>test</h1>
+    
       
     <>
       <div class="card">
