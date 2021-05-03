@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import DidYouKnow from "../components/DidYouKnow";
+import EndGame from "../components/EndGame";
 import MusicGame from "../components/MusicGame";
+import Welcome from "../components/Welcome"
 
 const MusicContainer = () => {
     
@@ -12,8 +14,13 @@ const MusicContainer = () => {
     const [factList, setFactList] = useState([]);
     const [audio, setAudio] = useState(null);
     const [userScore, setUserScore] = useState(0);
+    const [game, setGame] = useState(false);
+    const [endGame, setEndGame] = useState(false);
+    // const [quit, setQuit] = useState(false);
+    const [count, setCount] = useState(0);
     
-
+    console.log("game", game);
+    console.log("endGame", endGame);
    
 
     useEffect(() => {
@@ -21,15 +28,18 @@ const MusicContainer = () => {
       fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=40/genre=${selectedGenre}/json`)
       .then(res => res.json())
       .then(data => setSongList(data.feed.entry))
+      .catch(err => console.log(err));
     }, [selectedGenre])
 
     useEffect(() => {
-      console.log('setSelected Song use effect')
+      // console.log('setSelected Song use effect')
       setSelectedSong(songList[getRandomInt(39)]);
     }, [songList])
 
-    console.log("option list")
-    console.log(optionList)
+    // console.log('selectedGenre is:')
+    // console.log(selectedGenre)
+    // console.log("option list is:")
+    // console.log(optionList)
 
     useEffect(() => {
       shuffleSongs();
@@ -54,9 +64,10 @@ const MusicContainer = () => {
       const tempList = songList.filter((song) => {
       return song !== selectedSong;
       })
+      // console.log("tempList", tempList)
       let newList = [];
       for(let i=0; i<3; i++){
-        const extractedSong = tempList[getRandomInt(39)]
+        const extractedSong = tempList[getRandomInt(tempList.length - 1)]
         newList.push(extractedSong);
         const indexToRemove = tempList.indexOf(extractedSong);
         tempList.splice(indexToRemove, 1);
@@ -85,14 +96,16 @@ return(
     <div id="mainArticle">
         <div id="dropdownmenu">
         <select name="_selGenre" onChange={handleGenreChange}>
-            <option>All Genres</option> 
+            {/* <option>All Genres</option>  */}
             <option value="21">Rock</option>
             <option value="14">Pop</option>
             <option value="11">Jazz</option>
         </select>
         
           <article>
-          <MusicGame 
+
+          { !game ? <Welcome game={game} setGame={setGame} userScore={userScore} endGame={endGame} count={count} setEndGame={setEndGame}/> : null} 
+          { game && count < 5 ? <MusicGame 
         
         songList={songList} 
         selectedGenre={selectedGenre} 
@@ -103,7 +116,16 @@ return(
         setAudio={setAudio} 
         optionList={optionList} 
         setOptionList={setOptionList} 
-        handleUserScore={handleUserScore} /> 
+        handleUserScore={handleUserScore} 
+        endgame={endGame}
+        setEndGame={setEndGame}
+        count={count}
+        setCount={setCount}
+
+        /> : null }
+
+        { game && count === 5 ? <EndGame /> : null}
+
           </article>
       
         </div>
@@ -112,7 +134,7 @@ return(
         </div>
         <nav id="mainNav">User Score: {userScore}</nav>
       <div id="musicFacts">
-        <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} />
+        <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
       </div>
       <footer id="pageFooter">Music App @2021</footer>
         

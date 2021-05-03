@@ -1,13 +1,26 @@
 import React, { useState, useEffect } from "react";
 
-const Song = ({selectedSong, optionList, handleUserScore}) => {
+const Song = ({selectedSong, optionList, handleUserScore, setEndGame, count, setCount}) => {
 
   const [selectValue, setSelectValue] = useState("");
-  
+  // const [count, setCount] = useState(0);
+
+  console.log("count", count);
+
+  const handleCount = () => {
+    if(count < 5){
+      setCount(count + 1);
+    }
+  }
+
   const handleChange = (e) => {
     setSelectValue(e.target.value);
   }
   console.log(`this is select value: ${selectValue}`)
+
+  if(optionList.includes(undefined)){ // ===> hack for undefined or null errors
+    return null;
+  }
 
 
   return (
@@ -15,11 +28,11 @@ const Song = ({selectedSong, optionList, handleUserScore}) => {
     
       
     <>
-      <div class="card">
+      <div className="card">
 
         {typeof(selectedSong) != "undefined" ? <img src='https://source.unsplash.com/500x500/?music' class="card-img-top" alt="..."/> : <p>undefined error</p> }
 
-      <div class="card-body">
+      <div className="card-body">
 
         {typeof(selectedSong) != "undefined" ? <audio
         controls
@@ -30,8 +43,8 @@ const Song = ({selectedSong, optionList, handleUserScore}) => {
 
         <br/><br/><br/>    
 
-        <h5 class="card-title">Guess the artist!!!</h5>
-          <p class="card-text">
+        <h5 className="card-title">Guess the artist!!!</h5>
+          <p className="card-text">
          
 
             {(typeof(optionList[0])!= "undefined" 
@@ -48,7 +61,7 @@ const Song = ({selectedSong, optionList, handleUserScore}) => {
               : <p>undefined error</p>
 
             }
-            <button type="submit" value={selectValue} class="btn btn-primary" onClick={handleUserScore}>Submit</button>
+            <button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore, handleCount}>Submit</button>
          
         
           </p>

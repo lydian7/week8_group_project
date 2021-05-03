@@ -34,7 +34,7 @@ function DidYouKnow({selectedGenre}){
       .then(
         (result) => {
           setIsLoaded(true);
-          console.log("result = "+result);
+          // console.log("result = "+result);
           setItems(result);
         },
         
