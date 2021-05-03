@@ -4,10 +4,10 @@ import Song from "../components/Song";
 const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong, audio, setAudio, optionList, setOptionList, handleUserScore}) => {
 
     const handleSelectedSong = () => {
-      setSelectedSong(songList[getRandomInt(40)]);
+      setSelectedSong(songList[getRandomInt(39)]);
     }
 
-    console.log(audio)
+
 
     return(
         

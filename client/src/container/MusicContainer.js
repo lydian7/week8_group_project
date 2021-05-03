@@ -21,6 +21,7 @@ const MusicContainer = () => {
       fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=40/genre=${selectedGenre}/json`)
       .then(res => res.json())
       .then(data => setSongList(data.feed.entry))
+      .catch(err => console.log(err));
     }, [selectedGenre])
 
     useEffect(() => {
@@ -28,7 +29,9 @@ const MusicContainer = () => {
       setSelectedSong(songList[getRandomInt(39)]);
     }, [songList])
 
-    console.log("option list")
+    console.log('selectedGenre is:')
+    console.log(selectedGenre)
+    console.log("option list is:")
     console.log(optionList)
 
     useEffect(() => {
@@ -54,9 +57,10 @@ const MusicContainer = () => {
       const tempList = songList.filter((song) => {
       return song !== selectedSong;
       })
+      console.log("tempList", tempList)
       let newList = [];
       for(let i=0; i<3; i++){
-        const extractedSong = tempList[getRandomInt(39)]
+        const extractedSong = tempList[getRandomInt(tempList.length - 1)]
         newList.push(extractedSong);
         const indexToRemove = tempList.indexOf(extractedSong);
         tempList.splice(indexToRemove, 1);
@@ -85,7 +89,7 @@ return(
     <div id="mainArticle">
         <div id="dropdownmenu">
         <select name="_selGenre" onChange={handleGenreChange}>
-            <option>All Genres</option> 
+            {/* <option>All Genres</option>  */}
             <option value="21">Rock</option>
             <option value="14">Pop</option>
             <option value="11">Jazz</option>

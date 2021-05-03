@@ -9,6 +9,9 @@ const Song = ({selectedSong, optionList, handleUserScore}) => {
   }
   console.log(`this is select value: ${selectValue}`)
 
+  if(optionList.includes(undefined)){ // ===> hack for undefined or 
+    return null;
+  }
 
   return (
 
