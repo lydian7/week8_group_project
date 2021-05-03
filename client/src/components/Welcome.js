@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Welcome= ({game, setGame, userScore, endGame, setEndGame, count}) => {
+const Welcome= ({game, setGame}) => {
     
     const handleGame = () => {
       setGame(!game)

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Song from "../components/Song";
 
-const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong, audio, setAudio, optionList, setOptionList, handleUserScore, endGame, setEndGame, count, setCount}) => {
+const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong, optionList, handleUserScore, count, setCount}) => {
 
     const handleSelectedSong = () => {
       setSelectedSong(songList[getRandomInt(39)]);
@@ -16,7 +16,7 @@ const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong, audio
     return(
         
         <div id="musicgame">
-            { !endGame  ? <Song selectedSong={selectedSong} audio={audio} setAudio={setAudio} optionList={optionList} handleUserScore={handleUserScore} setEndGame={setEndGame} count={count} setCount={setCount}/> : <p>EndGame</p>} 
+            <Song selectedSong={selectedSong} optionList={optionList} handleUserScore={handleUserScore} count={count} setCount={setCount}/>
             <br/>
             <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button>
             <br/>

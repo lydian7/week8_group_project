@@ -13,24 +13,13 @@ const MusicContainer = () => {
     const [selectedSong, setSelectedSong] = useState(null);
     const [selectedGenre, setSelectedGenre] = useState(null);
     const [optionList, setOptionList] = useState([]);
-    const [selectedFact, setSelectedFact] = useState(null);
-    const [factList, setFactList] = useState([]);
-    const [audio, setAudio] = useState(null);
     const [userScore, setUserScore] = useState(0);
-
     const [leaderBoard, setLeaderBoard] = useState([]);
-
-
     const [game, setGame] = useState(false);
-    const [endGame, setEndGame] = useState(false);
-    // const [quit, setQuit] = useState(false);
     const [count, setCount] = useState(0);
     
     console.log("game", game);
-    console.log("endGame", endGame);
-
    
-
     useEffect(() => {
       console.log('fetch api and set songlist use effect, listening to selectedGenre')
       fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=40/genre=${selectedGenre}/json`)
@@ -105,75 +94,61 @@ const MusicContainer = () => {
     setLeaderBoard(data)
     })
     },[]);
-console.log("leaderBoard", leaderBoard);
+    console.log("leaderBoard", leaderBoard);
     
 
-return(
+  return(
+
       <div className="music-container">
         <header id="pageHeader">Music Quiz</header>
-    <div id="mainArticle">
-        <div id="dropdownmenu">
-        <select name="_selGenre" onChange={handleGenreChange}>
-            <option>Select Genre</option> 
-            <option value="21">Rock</option>
-            <option value="14">Pop</option>
-            <option value="11">Jazz</option>
-        </select>
+          <div id="mainArticle">
+            <div id="dropdownmenu">
+              <select name="_selGenre" onChange={handleGenreChange}>
+                <option>Select Genre</option> 
+                <option value="21">Rock</option>
+                <option value="14">Pop</option>
+                <option value="11">Jazz</option>
+              </select>
+            </div>
         
-          <article>
+            <article>
 
-          { !game ? <Welcome game={game} setGame={setGame} userScore={userScore} endGame={endGame} count={count} setEndGame={setEndGame}/> : null} 
-          { game && count < 5 ? <MusicGame 
-        
-        songList={songList} 
-        selectedGenre={selectedGenre} 
-        getRandomInt={getRandomInt} 
-        selectedSong={selectedSong} 
-        setSelectedSong={setSelectedSong} 
-        audio={audio} 
-        setAudio={setAudio} 
-        optionList={optionList} 
-        setOptionList={setOptionList} 
-        handleUserScore={handleUserScore} 
-        endgame={endGame}
-        setEndGame={setEndGame}
-        count={count}
-        setCount={setCount}
+              { !game ? <Welcome game={game} setGame={setGame}/> : null} 
 
-        /> : null }
+              { game && count < 5 ? <MusicGame 
+              songList={songList} 
+              selectedGenre={selectedGenre} 
+              getRandomInt={getRandomInt} 
+              selectedSong={selectedSong} 
+              setSelectedSong={setSelectedSong} 
+              optionList={optionList} 
+              handleUserScore={handleUserScore} 
+              count={count}
+              setCount={setCount}
+              /> : null }
 
-        { game && count === 5 ? <EndGame /> : null}
+              { game && count === 5 ? <EndGame /> : null}
 
-          </article>
-      
+            </article>
+          </div>
+
+            <nav id="mainNav">
+              Leader Board:
+              <br/>
+              {
+                leaderBoard.map((player, index) => {
+                return ( <p key={index}>{player.name} : {player.score}</p>)})
+              }
+              <br/>
+            </nav>
+
+        <div id="musicFacts">
+          <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
         </div>
-        
-        
-        </div>
-        <nav id="mainNav">
-
-        Leader Board:
-        <br/>
-        {
-          leaderBoard.map((player, index) => {
-            return (
-              <p key={index}>{player.name} : {player.score}</p>
-              
-            )
-          })
-        }
-        {/* User Score: {userScore} */}
-        <br/>
-        
-        </nav>
-        
-      <div id="musicFacts">
-        <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
+        <footer id="pageFooter">Music App @2021</footer>  
       </div>
-      <footer id="pageFooter">Music App @2021</footer>
-        
-        </div>
-    )
+
+  )
 }
 
 export default MusicContainer;
