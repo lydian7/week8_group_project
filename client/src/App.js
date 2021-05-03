@@ -8,11 +8,11 @@ let userScore = 0;
 function App() {
   return (
     <div className="App">
-      <header id="pageHeader">Music App</header>
+      <header id="pageHeader">Music Quiz</header>
       <article id="mainArticle">
         <MusicContainer /> 
       </article>
-      <nav id="mainNav">Add new user</nav>
+      <nav id="mainNav">User Score: {userScore}</nav>
       <div id="musicFacts">
         <DidYouKnow  userScore={userScore} />
       </div>
