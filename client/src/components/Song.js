@@ -34,10 +34,11 @@ const Song = ({selectedSong, optionList, handleUserScore}) => {
           <p class="card-text">
          
 
-            {typeof(optionList[0]) != "undefined" ?   
+            {(typeof(optionList[0])!= "undefined" 
+            && optionList.length>3)  ?   
 
               <select name="quiz" className="dropdown" onChange={handleChange}>
-                <option>Guess the song</option>
+                <option>Select Answer</option>
                 <option value={optionList[0]["im:artist"].label}>{optionList[0]["im:artist"].label}</option>
                 <option value={optionList[1]["im:artist"].label}>{optionList[1]["im:artist"].label}</option>
                 <option value={optionList[2]["im:artist"].label}>{optionList[2]["im:artist"].label}</option>

@@ -11,6 +11,27 @@
     margin: 0;
     /* border: solid; */
     }
+
+    h1 {
+      font-family: 'Monoton', cursive;
+      font-size: 4em;
+      margin: 0;
+      text-align: center;
+    }
+    
+    h2 {
+      color: #31698a;
+    }
+    
+    h3 {
+      margin: 5px;
+      color: #333;
+    }
+    
+    h4 {
+      margin: 5px;
+      color: grey;
+    }  
   
   #pageHeader {
     grid-area: header;
