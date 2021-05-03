@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Welcome= ({game, setGame, userScore, endGame, setEndGame, count}) => {
+const Welcome= ({game, setGame}) => {
     
     const handleGame = () => {
       setGame(!game)
@@ -8,12 +8,11 @@ const Welcome= ({game, setGame, userScore, endGame, setEndGame, count}) => {
 
     return(
         <div>
-        {count === 5 ? <p>End</p> :  
         <div>
          <h1>welcome</h1>
-        <p> Press the button to play the game</p>
+        <p><strong>Select a genre to start!!!</strong> </p>
         <button onClick={handleGame}>Play!</button> 
-        </div>}
+        </div>
       
     
         
