@@ -3,9 +3,7 @@ import Song from "../components/Song";
 
 const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong, optionList, handleUserScore, count, setCount}) => {
 
-    const handleSelectedSong = () => {
-      setSelectedSong(songList[getRandomInt(39)]);
-    }
+    
 
     console.log()
 
@@ -16,9 +14,11 @@ const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong, optio
     return(
         
         <div id="musicgame">
+      
             <Song selectedSong={selectedSong} optionList={optionList} handleUserScore={handleUserScore} count={count} setCount={setCount}/>
+
             <br/>
-            <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button>
+           
             <br/>
         </div>
        
