@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import DidYouKnow from "../components/DidYouKnow";
+import EndGame from "../components/EndGame";
 import MusicGame from "../components/MusicGame";
-import WelcomEnd from "../components/WelcomEnd"
+import Welcome from "../components/Welcome"
 
 const MusicContainer = () => {
     
@@ -15,7 +16,8 @@ const MusicContainer = () => {
     const [userScore, setUserScore] = useState(0);
     const [game, setGame] = useState(false);
     const [endGame, setEndGame] = useState(false);
-    const [quit, setQuit] = useState(false);
+    // const [quit, setQuit] = useState(false);
+    const [count, setCount] = useState(0);
     
     console.log("game", game);
     console.log("endGame", endGame);
@@ -101,7 +103,9 @@ return(
         </select>
         
           <article>
-          { !game ? <WelcomEnd game={game} setGame={setGame} userScore={userScore} endGame={endGame} setEndGame={setEndGame}/> : <MusicGame 
+
+          { !game ? <Welcome game={game} setGame={setGame} userScore={userScore} endGame={endGame} count={count} setEndGame={setEndGame}/> : null} 
+          { game && count < 5 ? <MusicGame 
         
         songList={songList} 
         selectedGenre={selectedGenre} 
@@ -115,7 +119,13 @@ return(
         handleUserScore={handleUserScore} 
         endgame={endGame}
         setEndGame={setEndGame}
-        /> }
+        count={count}
+        setCount={setCount}
+
+        /> : null }
+
+        { game && count === 5 ? <EndGame /> : null}
+
           </article>
       
         </div>
