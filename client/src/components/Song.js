@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from "react";
 
-const Song = ({selectedSong, optionList, handleUserScore}) => {
+const Song = ({selectedSong, optionList, handleUserScore, setEndGame}) => {
 
   const [selectValue, setSelectValue] = useState("");
-  
+  const [count, setCount] = useState(0);
+
+  console.log("count", count);
+
+  const handleCount = () => {
+    if(count <= 5){
+      setCount(count + 1);
+    } else if(count ==5){
+      setEndGame(true);
+    }
+  }
+
   const handleChange = (e) => {
     setSelectValue(e.target.value);
   }
   console.log(`this is select value: ${selectValue}`)
 
-  if(optionList.includes(undefined)){ // ===> hack for undefined or 
+  if(optionList.includes(undefined)){ // ===> hack for undefined or null errors
     return null;
   }
+
 
   return (
 
@@ -51,7 +63,7 @@ const Song = ({selectedSong, optionList, handleUserScore}) => {
               : <p>undefined error</p>
 
             }
-            <button type="submit" value={selectValue} class="btn btn-primary" onClick={handleUserScore}>Submit</button>
+            <button type="submit" value={selectValue} class="btn btn-primary" onClick={handleUserScore, handleCount}>Submit</button>
          
         
           </p>

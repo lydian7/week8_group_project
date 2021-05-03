@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import DidYouKnow from "../components/DidYouKnow";
 import MusicGame from "../components/MusicGame";
+import WelcomEnd from "../components/WelcomEnd"
 
 const MusicContainer = () => {
     
@@ -12,6 +13,9 @@ const MusicContainer = () => {
     const [factList, setFactList] = useState([]);
     const [audio, setAudio] = useState(null);
     const [userScore, setUserScore] = useState(0);
+    const [game, setGame] = useState(false);
+    const [endGame, setEndGame] = useState(false);
+    const [quit, setQuit] = useState(false);
     
 
    
@@ -96,7 +100,7 @@ return(
         </select>
         
           <article>
-          <MusicGame 
+          { game === false ? <WelcomEnd game={game} setGame={setGame} userScore={userScore} endGame={endGame} setEndGame={setEndGame}/> : <MusicGame 
         
         songList={songList} 
         selectedGenre={selectedGenre} 
@@ -107,7 +111,10 @@ return(
         setAudio={setAudio} 
         optionList={optionList} 
         setOptionList={setOptionList} 
-        handleUserScore={handleUserScore} /> 
+        handleUserScore={handleUserScore} 
+        endgame={endGame}
+        setEndGame={setEndGame}
+        /> }
           </article>
       
         </div>
@@ -116,7 +123,7 @@ return(
         </div>
         <nav id="mainNav">User Score: {userScore}</nav>
       <div id="musicFacts">
-        <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} />
+        <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
       </div>
       <footer id="pageFooter">Music App @2021</footer>
         
