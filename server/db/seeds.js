@@ -4,7 +4,7 @@ use musicquiz;
 db.dropDatabase();
 db.facts.insertMany ([
     {
-        genre: "pop",
+        genre: "14",
         facts: ["The first pop video was Bohemian Rhapsody by Queen, released in 1975",
         "Today there are probably hundreds of different types of pop music, including K-pop (Korean pop), hip hop, electric dance music (EDM) and rock music.",
         "The term 'pop music' became commonly used in the 1950s when rock and roll music became a hit with teenagers.",
@@ -14,7 +14,7 @@ db.facts.insertMany ([
         ]
     },
     {
-        genre: "rock",
+        genre: "21",
         facts: ["A 2001 study found that cows produce more milk when listening to relaxing moo-sic (sorry, we couldn’t resist!)",
          "Radio and television made music more accessible to people over the 20th century.",
           "The most expensive instrument in the world is the “Lady Blunt” Stradivarius violin, which sold in 2011 for US$15.9 million.",
@@ -24,7 +24,7 @@ db.facts.insertMany ([
         ]
     },
     {
-        genre: "jazz",
+        genre: "11",
         facts: ["Indian Classical Music And Jazz Have A Lot In Common.The renowned sitar player, Ravi Shankar, had quite an influence on John Coltrane and John McLaughlin.",
          "According to Unesco, jazz is “a means to develop and increase intercultural exchanges and understanding between cultures for the purpose of mutual comprehension and tolerance”.",
         "The first truly successful US jazz group called itself The Original Dixieland Jass Band. They changed the spelling to “jazz” in 1917.",
@@ -34,5 +34,5 @@ db.facts.insertMany ([
         ]
     }
     
-
-]);
+]
+);

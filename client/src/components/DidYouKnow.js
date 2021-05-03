@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function DidYouKnow(){
+function DidYouKnow({selectedGenre}){
     const [factsList, setFactsList] = useState([]);
 
   const [error, setError] = useState(null);
