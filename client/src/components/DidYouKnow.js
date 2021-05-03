@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function DidYouKnow({selectedGenre}){
-    const [factsList, setFactsList] = useState([]);
+  const [factsList, setFactsList] = useState([]);
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,19 +19,12 @@ function DidYouKnow({selectedGenre}){
   }
 
   
-  function getGenreType(genreType){
-      if(genreType.toUpperCase()===POP){
-          return POP;
+  function getFactsByGenre(){
+    for(const object of items){
+      if (object.genre == selectedGenre){
+        setFactsList(object.facts)
       }
-      else if(genreType.toUpperCase()===ROCK){
-        return ROCK;
-      }
-      else if(genreType.toUpperCase()===JAZZ){
-        return JAZZ;
-      }
-      else{
-          return "";
-      }
+    }
   }
 
   
@@ -50,7 +43,15 @@ function DidYouKnow({selectedGenre}){
           setError(error);
         }
       )
+      
   }, [])
+
+  useEffect(() => {
+  getFactsByGenre();
+    
+  }, [selectedGenre])
+
+  
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -60,27 +61,16 @@ function DidYouKnow({selectedGenre}){
     return (
     <>
     <h2>Did you know?</h2>
+    <h2>{selectedGenre} Facts</h2>
       <ul>
-        {items.map(item => (
-          <li key={item._id}>
-            <strong>  
-                {/* if Genre is POP  */
-                getGenreType(item.genre)
-                /* if Genre is ROCK  */
-
-                /* if Genre is JAZZ  */}
-            </strong>
-            <br />
-            {item.facts[getRandomInt(0,4)]}
-          </li>
-        ))}
+      <li> {factsList[getRandomInt(0,4)]} </li>
       </ul>
       </>
     );
   }
     
 
-  
+ 
     
    
 }
