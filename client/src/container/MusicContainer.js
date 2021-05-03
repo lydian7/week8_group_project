@@ -28,6 +28,7 @@ const MusicContainer = () => {
     
     console.log("game", game);
     console.log("endGame", endGame);
+    console.log("userScore: ", userScore)
 
    
 
@@ -57,12 +58,12 @@ const MusicContainer = () => {
         setSelectedGenre(e.target.value)
     };
 
-    const handleUserScore = (e) => {
-      if (e.target.value == selectedSong["im:artist"].label){
-        setUserScore(userScore + 1)
-      }
+    // const handleUserScore = (e) => {
+    //   if (e.target.value == selectedSong["im:artist"].label){
+    //     setUserScore(userScore + 1)
+    //   }
       
-    }
+    // }
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -134,15 +135,16 @@ return(
         setAudio={setAudio} 
         optionList={optionList} 
         setOptionList={setOptionList} 
-        handleUserScore={handleUserScore} 
+        userScore={userScore}
         endgame={endGame}
         setEndGame={setEndGame}
         count={count}
         setCount={setCount}
+        setUserScore={setUserScore}
 
         /> : null }
 
-        { game && count === 5 ? <EndGame /> : null}
+        { game && count === 5 ? <EndGame userScore={userScore} /> : null}
 
           </article>
       
