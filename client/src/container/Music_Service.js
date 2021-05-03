@@ -1,5 +1,5 @@
-const musicFactsUrl = 'http://localhost:500/api/musicfacts/';
-const userScoreUrl = 'http://localhost:500/api/userscore/';
+const musicFactsUrl = 'http://localhost:5000/api/musicfacts/';
+const userScoreUrl = 'http://localhost:5000/api/userscore/';
 
 export const getMusicFacts = () => {
   return fetch(musicFactsUrl).then(res => res.json())

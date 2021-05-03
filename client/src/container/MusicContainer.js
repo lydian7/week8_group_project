@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import DidYouKnow from "../components/DidYouKnow";
 import MusicGame from "../components/MusicGame";
+import {getUserScore, } from "./Music_Service";
 
 const MusicContainer = () => {
     
@@ -12,7 +13,7 @@ const MusicContainer = () => {
     const [factList, setFactList] = useState([]);
     const [audio, setAudio] = useState(null);
     const [userScore, setUserScore] = useState(0);
-    
+    const [leaderBoard, setLeaderBoard] = useState([]);
 
    
 
@@ -79,6 +80,16 @@ const MusicContainer = () => {
       setOptionList(newList);
     }  
 
+    useEffect(()=>{
+    getUserScore()
+    .then((data)=>{
+    // console.log(userScore);
+    setLeaderBoard(data)
+    })
+    },[]);
+console.log("leaderBoard", leaderBoard);
+    
+
 return(
       <div className="music-container">
         <header id="pageHeader">Music Quiz</header>
@@ -110,7 +121,22 @@ return(
         
         
         </div>
-        <nav id="mainNav">User Score: {userScore}</nav>
+        <nav id="mainNav">
+
+        Leader Board:
+        <br/>
+        {
+          leaderBoard.map((player) => {
+            return (
+              <p>{player.name} : {player.score}</p>
+              
+            )
+          })
+        }
+        {/* User Score: {userScore} */}
+        <br/>
+        
+        </nav>
         
       <div id="musicFacts">
         <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} />
