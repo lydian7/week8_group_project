@@ -8,12 +8,11 @@ const Welcome= ({game, setGame, userScore, endGame, setEndGame, count}) => {
 
     return(
         <div>
-        {count === 5 ? <p>End</p> :  
         <div>
          <h1>welcome</h1>
-        <p> Select a genre to start!!!</p>
+        <p><strong>Select a genre to start!!!</strong> </p>
         <button onClick={handleGame}>Play!</button> 
-        </div>}
+        </div>
       
     
         
