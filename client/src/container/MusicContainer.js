@@ -155,9 +155,9 @@ return(
         Leader Board:
         <br/>
         {
-          leaderBoard.map((player) => {
+          leaderBoard.map((player, index) => {
             return (
-              <p>{player.name} : {player.score}</p>
+              <p key={index}>{player.name} : {player.score}</p>
               
             )
           })
