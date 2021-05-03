@@ -36,3 +36,17 @@ db.facts.insertMany ([
     
 ]
 );
+db.userscore.insertMany ([
+    {
+        name: "Martin",
+        score: 0 
+    },
+    {
+        name: "Ahmet",
+        score: 0 
+    },
+    {
+        name: "Pooja",
+        score: 0 
+    }  
+]);

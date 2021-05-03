@@ -2,7 +2,10 @@ import React, {useState, useEffect} from "react";
 import DidYouKnow from "../components/DidYouKnow";
 import EndGame from "../components/EndGame";
 import MusicGame from "../components/MusicGame";
-import Welcome from "../components/Welcome"
+
+import {getUserScore, } from "./Music_Service";
+
+import Welcome from "../components/Welcome";
 
 const MusicContainer = () => {
     
@@ -14,6 +17,10 @@ const MusicContainer = () => {
     const [factList, setFactList] = useState([]);
     const [audio, setAudio] = useState(null);
     const [userScore, setUserScore] = useState(0);
+
+    const [leaderBoard, setLeaderBoard] = useState([]);
+
+
     const [game, setGame] = useState(false);
     const [endGame, setEndGame] = useState(false);
     // const [quit, setQuit] = useState(false);
@@ -21,6 +28,7 @@ const MusicContainer = () => {
     
     console.log("game", game);
     console.log("endGame", endGame);
+
    
 
     useEffect(() => {
@@ -90,6 +98,16 @@ const MusicContainer = () => {
       setOptionList(newList);
     }  
 
+    useEffect(()=>{
+    getUserScore()
+    .then((data)=>{
+    // console.log(userScore);
+    setLeaderBoard(data)
+    })
+    },[]);
+console.log("leaderBoard", leaderBoard);
+    
+
 return(
       <div className="music-container">
         <header id="pageHeader">Music Quiz</header>
@@ -132,7 +150,23 @@ return(
         
         
         </div>
-        <nav id="mainNav">User Score: {userScore}</nav>
+        <nav id="mainNav">
+
+        Leader Board:
+        <br/>
+        {
+          leaderBoard.map((player) => {
+            return (
+              <p>{player.name} : {player.score}</p>
+              
+            )
+          })
+        }
+        {/* User Score: {userScore} */}
+        <br/>
+        
+        </nav>
+        
       <div id="musicFacts">
         <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
       </div>
