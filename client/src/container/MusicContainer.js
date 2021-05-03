@@ -11,7 +11,7 @@ const MusicContainer = () => {
     
     const [songList, setSongList] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
-    const [selectedGenre, setSelectedGenre] = useState(0);
+    const [selectedGenre, setSelectedGenre] = useState(null);
     const [optionList, setOptionList] = useState([]);
     const [selectedFact, setSelectedFact] = useState(null);
     const [factList, setFactList] = useState([]);
@@ -114,7 +114,7 @@ return(
     <div id="mainArticle">
         <div id="dropdownmenu">
         <select name="_selGenre" onChange={handleGenreChange}>
-            {/* <option>All Genres</option>  */}
+            <option>Select Genre</option> 
             <option value="21">Rock</option>
             <option value="14">Pop</option>
             <option value="11">Jazz</option>

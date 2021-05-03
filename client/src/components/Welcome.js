@@ -11,7 +11,7 @@ const Welcome= ({game, setGame, userScore, endGame, setEndGame, count}) => {
         {count === 5 ? <p>End</p> :  
         <div>
          <h1>welcome</h1>
-        <p> Press the button to play the game</p>
+        <p> Select a genre to start!!!</p>
         <button onClick={handleGame}>Play!</button> 
         </div>}
       
