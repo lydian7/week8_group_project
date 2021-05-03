@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 
-const Song = ({selectedSong, optionList, handleUserScore, count, setCount}) => {
+
+const Song = ({selectedSong, optionList, handleUserScore, count, setCount, userScore}) => {
+
 
 
   const [selectValue, setSelectValue] = useState("");
@@ -9,10 +11,20 @@ const Song = ({selectedSong, optionList, handleUserScore, count, setCount}) => {
 
   console.log("count", count);
 
-  const handleCount = () => {
+  // const handleCount = () => {
+  //   if(count < 5){
+  //     setCount(count + 1);
+  //   }
+  // }
+
+  const handleUserScore = (e) => {
+    if (e.target.value == selectedSong["im:artist"].label){
+      setUserScore(userScore + 1)
+    }
     if(count < 5){
       setCount(count + 1);
     }
+    
   }
 
   const handleChange = (e) => {
@@ -27,6 +39,11 @@ const Song = ({selectedSong, optionList, handleUserScore, count, setCount}) => {
   const handleSelectedSong = () => {
     setSelectedSong(songList[getRandomInt(39)]);
   }
+
+  // const handleSubmit = () => {
+  //   handleCount()
+  //   handleUserScore()
+  // }
 
 
   return (
@@ -67,7 +84,7 @@ const Song = ({selectedSong, optionList, handleUserScore, count, setCount}) => {
               : <p>undefined error</p>
 
             }
-            <button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore, handleCount}>Submit</button>
+            <button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore}>Submit</button>
             <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button>
         
           </p>
