@@ -55,10 +55,17 @@ h4 {
   
 #pageHeader {
   grid-area: header;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   background: goldenrod;
   text-align: center;
   font-family: 'Monoton', cursive;
   font-size: 30px; 
+}
+
+#pageHeader > p {
+  justify-self: center;
 }
 
 #pageFooter {
