@@ -31,7 +31,7 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
 
               <select data-testid="player-select" onChange={handleSelectedPlayer}>
 
-                <option disabled defaultValue>Select a Player</option>
+                <option disabled selected>Select a Player</option>
               {/* <select onChange={handleSelectedPlayer}>
                 <option data-testid="player-select" disabled selected>Select a Player</option> */}
                 {leaderBoard.map((player) => {
