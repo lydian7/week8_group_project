@@ -228,7 +228,7 @@ const MusicContainer = () => {
 
              { game ?    
               <div>
-              Leader Board:
+            
               <br/>
 
               <h2>Leaderboard</h2>
@@ -261,7 +261,7 @@ const MusicContainer = () => {
           <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} game={game}/>
 
         </div>
-        <footer id="pageFooter">Music App @2021</footer>  
+        <footer id="pageFooter">CHARTSTAR @2021</footer>  
       </div>
 
   )

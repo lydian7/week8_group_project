@@ -92,6 +92,7 @@ h4 {
 #pageFooter {
   grid-area: footer;
   background: #333;
+  color:white;
 }
 
 #mainArticle { 
@@ -137,6 +138,7 @@ ol  {
   font-family:'black_maskpress';
   font-size: 20px; 
   color: white;
+  /* background-image: url("https://i.pinimg.com/originals/03/05/1c/03051ca3a068ae4a00f51543614c799e.jpg");  */
   
  }
 
@@ -245,6 +247,14 @@ header, footer, article, nav, div {
 #facts {
   font-size: medium;
   align-items: center;
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+  
 }
 
 .flip-box {
