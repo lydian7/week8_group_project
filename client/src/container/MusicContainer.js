@@ -213,9 +213,9 @@ const MusicContainer = () => {
               }
               </ol> 
               <br/>
-              </div>: null
+              </div> : null
               }
-              </nav> 
+            </nav> 
 
         <div id="musicFacts">
           <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} game={game}/>
