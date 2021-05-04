@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {updateUserScore} from "../container/Music_Service"
 
-const EndGame = ({userScore, setReset, selectedPlayer, leaderBoard, updateUser}) => {
+const EndGame = ({userScore, setGame, setCount, selectedPlayer, leaderBoard, updateUser, setUserScore}) => {
 
 
     console.log("endgame selectedPlayer", selectedPlayer)
@@ -26,12 +26,15 @@ const EndGame = ({userScore, setReset, selectedPlayer, leaderBoard, updateUser})
             name: player.name,
             score: totalScore
         });
+        setGame(false);
+        setCount(0);
+        setUserScore(0);
     }
     
       let greeting = ""
 
     
-      if (userScore > 4){
+      if (userScore >= 4){
         greeting = `Great score! ${userScore}/5`}
       if (userScore === 3){
         greeting = `Not Bad! ${userScore}/5`}
