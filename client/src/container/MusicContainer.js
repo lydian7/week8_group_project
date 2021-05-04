@@ -180,7 +180,19 @@ const MusicContainer = () => {
             <label>UserName</label>
             <input type="text" value={newUser}onChange={handleNameChange}/>
             <input type="submit" value="Register"/>
-         </form> : null
+         </form> : 
+         
+         <svg xmlns="http://www.w3.org/2000/svg" class="headerequilizer" viewBox="0 0 128 128">
+         <g>
+           <title>Audio Equilizer</title>
+           <rect class="bar" transform="translate(0,0)" y="15"></rect>
+           <rect class="bar" transform="translate(25,0)" y="15"></rect>
+           <rect class="bar" transform="translate(50,0)" y="15"></rect>
+           <rect class="bar" transform="translate(75,0)" y="15"></rect>
+           <rect class="bar" transform="translate(100,0)" y="15"></rect>
+         </g>
+         </svg>
+
           }  
 
             <h1>ChartStar</h1>
@@ -229,7 +241,19 @@ const MusicContainer = () => {
               }
               </ol> 
               <br/>
-              </div> : null
+              </div> : 
+
+              <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128">
+              <g>
+                <title>Audio Equilizer</title>
+                <rect class="bar" transform="translate(0,0)" y="15"></rect>
+                <rect class="bar" transform="translate(25,0)" y="15"></rect>
+                <rect class="bar" transform="translate(50,0)" y="15"></rect>
+                <rect class="bar" transform="translate(75,0)" y="15"></rect>
+                <rect class="bar" transform="translate(100,0)" y="15"></rect>
+              </g>
+              </svg>
+              
               }
             </nav> 
 
