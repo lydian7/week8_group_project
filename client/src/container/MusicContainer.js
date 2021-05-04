@@ -160,12 +160,13 @@ const MusicContainer = () => {
       <div className="music-container">
           <header id="pageHeader">
 
+          { !game ? 
           <form onSubmit={handlePostUser}>
             <label>UserName</label>
             <input type="text" value={newUser}onChange={handleNameChange}/>
             <input type="submit" value="Register"/>
-         </form>
-            
+         </form> : null
+          }  
 
             <h1>ChartStar</h1>
 
