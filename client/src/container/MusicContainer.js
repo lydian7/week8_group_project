@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import DidYouKnow from "../components/DidYouKnow";
 import EndGame from "../components/EndGame";
 import MusicGame from "../components/MusicGame";
+import {postUser} from "../container/Music_Service"
 
 import {getUserScore, updateUserScore} from "./Music_Service";
 
@@ -20,6 +21,7 @@ const MusicContainer = () => {
     const [reset, setReset] = useState(false);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [artistList, setArtistList] = useState([]);
+    const [newUser, setNewUser] = useState("");
     
 
     console.log("main container selectedPlayer", selectedPlayer);
@@ -103,10 +105,7 @@ const MusicContainer = () => {
         newList.push(selectedSong["im:artist"].label);
 
       }
-      
-
-    
-
+  
       let currentIndex = newList.length, temporaryValue, randomIndex;
      
       while (0 != currentIndex) {
@@ -138,18 +137,40 @@ const MusicContainer = () => {
       setLeaderBoard(updatedLeaderBoard);
     };
     
-    if(selectedSong === null){
-      return null;
+  //   if(selectedSong === null){
+  //     return null;
+  // }
+
+  const handleNameChange = (e) => {
+    setNewUser(e.target.value)
   }
+
+  const handlePostUser = (e) => {
+    console.log("username", e.target.value)
+    e.preventDefault();
+    postUser({
+      name: newUser,
+      score: 0
+    })
+    e.target.reset();
+  }
+
   return(
 
       <div className="music-container">
           <header id="pageHeader">
-            <h1>Chartstar</h1>
+
+          <form onSubmit={handlePostUser}>
+            <label>UserName</label>
+            <input type="text" value={newUser}onChange={handleNameChange}/>
+            <input type="submit" value="Register"/>
+         </form>
+            
+
+            <h1>ChartStar</h1>
+
           </header>
           <div id="mainArticle">
-
-        
 
             <article>
 
@@ -171,26 +192,33 @@ const MusicContainer = () => {
 
               { game && count === 5 ? <EndGame userScore={userScore} setGame={setGame} selectedPlayer={selectedPlayer} leaderBoard={leaderBoard} updateUser={updateUser} setCount={setCount} setUserScore={setUserScore}/> : null}
 
-              
-
 
             </article>
           </div>
 
             <nav id="mainNav">
+
+             { game ?    
+              <div>
+              Leader Board:
+              <br/>
+
               <h2>Leaderboard</h2>
               
+
               <ol>
               {
                 leaderBoardSorted.map((player, index) => {
                 return ( <li key={index}>{player.name} : {player.score}</li>)})
               }
-              </ol>
+              </ol> 
               <br/>
-            </nav>
+              </div>: null
+              }
+              </nav> 
 
         <div id="musicFacts">
-          <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
+          <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} game={game}/>
 
         </div>
         <footer id="pageFooter">Music App @2021</footer>  

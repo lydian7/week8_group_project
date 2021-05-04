@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 
 const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard}) => {
     
+    
+
+
     const handleGame = () => {
       setGame(!game)
     }
@@ -13,6 +17,8 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
     const handleSelectedPlayer = (e) => {
       setSelectedPlayer(e.target.value)
     }
+
+
 
     return(
       <div >
