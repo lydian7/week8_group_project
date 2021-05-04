@@ -3,7 +3,6 @@ import {updateUserScore} from "../container/Music_Service"
 
 const EndGame = ({userScore, setReset, selectedPlayer, leaderBoard, updateUser}) => {
 
-
     console.log("endgame selectedPlayer", selectedPlayer)
 
     const handleFinish = () => {
@@ -28,24 +27,26 @@ const EndGame = ({userScore, setReset, selectedPlayer, leaderBoard, updateUser})
         });
     }
     
-      let greeting = ""
+      let greeting = "";
 
     
       if (userScore > 4){
-        greeting = `Great score! ${userScore}/5`}
+        greeting = `Sinatra, Mercury, Wiliams and you. What do you have in common? Greatness. What a score!`}
       if (userScore === 3){
-        greeting = `Not Bad! ${userScore}/5`}
+        greeting = `More Robbie Williams than Gary Barlow. Decent effort!`}
       if (userScore < 3){
-        greeting = `Well.. that was embarrassing! ${userScore}/5`}
+        greeting = `What kind of music are balloons afraid of? Pop Music. That joke was as bad as your score. Pathetic!
+        `}
 
         console.log("greeting", greeting)
 
 
 
     return(
-        <div>
-        <p>endgame</p>
-        {greeting}
+        <div id="endBox">
+        <h2>Final Score</h2>
+        <p>{greeting}</p>
+        <p>{userScore}/5</p>
         <button onClick={handleFinish}>Finish</button>
         </div>
     )
