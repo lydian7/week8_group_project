@@ -22,6 +22,7 @@ const MusicContainer = () => {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [artistList, setArtistList] = useState([]);
     const [newUser, setNewUser] = useState("");
+    const [userRegistered, setUserRegistered] = useState(false);
     
 
     console.log("main container selectedPlayer", selectedPlayer);
@@ -32,10 +33,20 @@ const MusicContainer = () => {
       // console.log(userScore);
       setLeaderBoard(data)
       })
-      },[]);
+      setUserRegistered(false);
+      },[userRegistered]);
       // console.log("leaderBoard", leaderBoard);
 
     console.log("artistList", artistList);
+
+    // useEffect(()=>{
+    //   getUserScore()
+    //   .then((data)=>{
+    //   // console.log(userScore);
+    //   setLeaderBoard(data)
+    //   })
+    //   userRegistered
+    //   },[userRegistered]);
 
 
    
@@ -146,13 +157,17 @@ const MusicContainer = () => {
   }
 
   const handlePostUser = (e) => {
-    console.log("username", e.target.value)
     e.preventDefault();
+    if (!newUser){
+      return
+    }
     postUser({
       name: newUser,
       score: 0
     })
-    e.target.reset();
+
+    setNewUser("")
+    setUserRegistered(true);
   }
 
   return(
