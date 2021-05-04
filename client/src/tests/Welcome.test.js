@@ -15,6 +15,10 @@ describe('Welcome', () => {
     expect(allOptions.length).toBe(4);
   });
 
+  it('should have player in select', () => {
+    const allOptions = container.getAllByTestId('player-select');
+    expect(allOptions.length).toBe(1);
+  });
 
 });
 
