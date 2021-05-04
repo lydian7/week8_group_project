@@ -1,5 +1,10 @@
+
+
 html{
   height: 100%;
+  margin: 0;
+  padding: 0;
+  
 }
 
 /* body {
@@ -25,27 +30,28 @@ html{
     "nav article ads"
     "footer footer footer";
   grid-template-rows: 60px 1fr 60px;
-  grid-template-columns: 20% 1fr 30%;
+  grid-template-columns: 25% 1fr 25%;
   grid-gap: 5px;
   height: 100vh;
   margin: 0;
+  background-color: lightgray;
+  font-family:'Source Sans Pro', sans-serif;
   /* border: solid; */
 }
 
-h1 {
-  font-family: 'Monoton', cursive;
-  font-size: 4em;
-  margin: 0;
+#welcome-message {
+  font-family:'Source Sans Pro', sans-serif;
+  
+  margin-bottom: 0;
   text-align: center;
+  color: white;
 }
+    
+
     
 h2 {
-  color: blue;
-}
-    
-h3 {
   margin: 5px;
-  color: #333;
+  color:white;
 }
     
 h4 {
@@ -58,10 +64,10 @@ h4 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: goldenrod;
+  background:#333;
   text-align: center;
-  font-family: 'Monoton', cursive;
-  font-size: 30px; 
+  font-family:'Source Sans Pro', sans-serif;
+  color: white;
 }
 
 #pageHeader > p {
@@ -70,29 +76,40 @@ h4 {
 
 #pageFooter {
   grid-area: footer;
-  background: goldenrod;
+  background: #333;
 }
 
 #mainArticle { 
   grid-area: article;
-  background: goldenrod;   
-  text-align: center;   
+  background-image: url("https://i.pinimg.com/originals/03/05/1c/03051ca3a068ae4a00f51543614c799e.jpg");   
+  text-align: center; 
+  background-repeat: no-repeat;  
+  background-size: cover;
 }
 
 #mainNav { 
   grid-area: nav; 
-  background: goldenrod;
-  font-family: 'Monoton', cursive;
+  background: #333;
+  font-family:'Source Sans Pro', sans-serif;
   font-size: 30px;
-  color: brown; 
+  color: white; 
+  
+}
+ul > li {
+  list-style: none;
+}
+ol  {
+  display: block;
 }
 
 #musicFacts { 
   grid-area: ads; 
-  background: goldenrod;
+  background: #333;
   text-align: center;
-  font-family: 'Monoton', cursive;
+  font-family:'Source Sans Pro', sans-serif;
   font-size: 20px; 
+  color: white;
+  
  }
 
 header, footer, article, nav, div {
@@ -154,23 +171,56 @@ header, footer, article, nav, div {
   color: white;
   font-size: larger;
   border: solid 1px white;
+  font-family:'Source Sans Pro', sans-serif;
  
 
 }
 
 #endBox > h2 {
   color: white;
+  font-family:'Source Sans Pro', sans-serif;
 }
 
 #endBox > button {
   background-color: lightgrey;
   color: white;
   border: solid 1px white;
+  font-family:'Source Sans Pro', sans-serif;
 }
 
 #endBox > button:hover {
   background-color: white;
   color: lightgray;
 }
+
+#welcome-box {
+  background-color: #333;
+  border: solid 1px white;
+  color: white;
+  font-size: large;
+  
+}
+
+#play {
+  background-color: lightgrey;
+  color: white;
+  border: solid 1px white;
+  font-family:'Source Sans Pro', sans-serif;
+}
+
+#play:hover {
+  background-color: white;
+  color: lightgray;
+}
+
+#facts {
+  font-size: medium;
+  align-items: center;
+}
+
+/* #facts {
+  background-color: white;
+  color: black;
+} */
 
 

@@ -145,7 +145,7 @@ const MusicContainer = () => {
 
       <div className="music-container">
           <header id="pageHeader">
-            <p>Music Quiz</p>
+            <h1>Chartstar</h1>
           </header>
           <div id="mainArticle">
 
@@ -178,8 +178,8 @@ const MusicContainer = () => {
           </div>
 
             <nav id="mainNav">
-              Leader Board:
-              <br/>
+              <h2>Leaderboard</h2>
+              
               <ol>
               {
                 leaderBoardSorted.map((player, index) => {
