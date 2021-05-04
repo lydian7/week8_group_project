@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function DidYouKnow({selectedGenre}){
+function DidYouKnow({selectedGenre, game}){
   const [factsList, setFactsList] = useState([]);
 
   const [error, setError] = useState(null);
@@ -74,13 +74,17 @@ function DidYouKnow({selectedGenre}){
     return <div>Loading...</div>;
   } else {
     return (
-    <>
+    <div>
+    {game ? 
+      <>
     <h2>Did you know?</h2>
     <h2>{GenreDisplay} Facts</h2>
       <ul>
       <li> {factsList[getRandomInt(0,4)]} </li>
-      </ul>
-      </>
+      </ul> 
+      </> : null
+      }
+    </div>
     );
   }
     

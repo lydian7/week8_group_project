@@ -105,10 +105,7 @@ const MusicContainer = () => {
         newList.push(selectedSong["im:artist"].label);
 
       }
-      
-
-    
-
+  
       let currentIndex = newList.length, temporaryValue, randomIndex;
      
       while (0 != currentIndex) {
@@ -171,8 +168,6 @@ const MusicContainer = () => {
           </header>
           <div id="mainArticle">
 
-        
-
             <article>
 
               { !game ? <Welcome game={game} setGame={setGame} setSelectedGenre={setSelectedGenre} setSelectedPlayer={setSelectedPlayer} leaderBoard={leaderBoard}/> : null} 
@@ -192,8 +187,6 @@ const MusicContainer = () => {
 
 
               { game && count === 5 ? <EndGame userScore={userScore} setGame={setGame} selectedPlayer={selectedPlayer} leaderBoard={leaderBoard} updateUser={updateUser} setCount={setCount} setUserScore={setUserScore}/> : null}
-
-              
 
 
             </article>
@@ -216,7 +209,7 @@ const MusicContainer = () => {
               </nav> 
 
         <div id="musicFacts">
-          <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
+          <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} game={game}/>
 
         </div>
         <footer id="pageFooter">Music App @2021</footer>  
