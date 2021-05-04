@@ -195,7 +195,7 @@ const MusicContainer = () => {
 
           }  
 
-            <h1>ChartStar</h1>
+          <h1>ChartStar</h1>
 
           </header>
           <div id="mainArticle">
