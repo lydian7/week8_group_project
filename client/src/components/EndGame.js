@@ -30,9 +30,9 @@ const EndGame = ({userScore, setReset, selectedPlayer, leaderBoard, updateUser})
       let greeting = "";
 
     
-      if (userScore > 4){
-        greeting = `Sinatra, Mercury, Wiliams and you. What do you have in common? Greatness. What a score!`}
-      if (userScore === 3){
+      if (userScore === 5){
+        greeting = `Sinatra, Mercury, Rose and you. What do you have in common? Greatness. What a score!`}
+      if (userScore >= 3){
         greeting = `More Robbie Williams than Gary Barlow. Decent effort!`}
       if (userScore < 3){
         greeting = `What kind of music are balloons afraid of? Pop Music. That joke was as bad as your score. Pathetic!
