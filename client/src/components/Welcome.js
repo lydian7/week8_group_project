@@ -28,7 +28,7 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
               </select>
         </div>
         <div id="dropdownmenu2">
-              <select onChange={handleSelectedPlayer}>
+              <select data-testid="player-select" onChange={handleSelectedPlayer}>
                 <option disabled defaultValue>Select a Player</option>
                 {leaderBoard.map((player) => {
                   return <option key={player._id} value={player._id}>{player.name}</option>
