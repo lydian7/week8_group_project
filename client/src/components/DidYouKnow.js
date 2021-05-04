@@ -77,8 +77,9 @@ function DidYouKnow({selectedGenre, game}){
     <div>
     {game ? 
       <>
-    <h2>Did you know?</h2>
+    
     <div id="facts">
+    <h2>Did you know?</h2>
     
     <h2>{GenreDisplay} Facts</h2>
       <ul>
