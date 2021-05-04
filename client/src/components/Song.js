@@ -25,6 +25,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
     if(count < 5){
       setCount(count + 1);
     }
+    
     handleSelectedSong()
     
     
@@ -48,6 +49,8 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
   //   handleCount()
   //   handleUserScore()
   // }
+
+ 
 
 
   return (
@@ -78,11 +81,11 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
             && optionList.length>3)  ?   
 
               <select name="quiz" className="dropdown" onChange={handleChange}>
-                <option value="default" >Select Answer</option>
-                <option value={optionList[0]["im:artist"].label}>{optionList[0]["im:artist"].label}</option>
-                <option value={optionList[1]["im:artist"].label}>{optionList[1]["im:artist"].label}</option>
-                <option value={optionList[2]["im:artist"].label}>{optionList[2]["im:artist"].label}</option>
-                <option value={optionList[3]["im:artist"].label}>{optionList[3]["im:artist"].label}</option>
+                <option disabled hidden value="" >Select Answer</option>
+                <option value={optionList[0]}>{optionList[0]}</option>
+                <option value={optionList[1]}>{optionList[1]}</option>
+                <option value={optionList[2]}>{optionList[2]}</option>
+                <option value={optionList[3]}>{optionList[3]}</option>
               </select>
 
               : <p>undefined error</p>

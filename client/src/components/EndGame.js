@@ -30,6 +30,8 @@ const EndGame = ({userScore, setGame, setCount, selectedPlayer, leaderBoard, upd
         setCount(0);
         setUserScore(0);
     }
+
+   
     
       let greeting = "";
 
