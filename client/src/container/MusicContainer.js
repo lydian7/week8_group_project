@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import DidYouKnow from "../components/DidYouKnow";
 import EndGame from "../components/EndGame";
 import MusicGame from "../components/MusicGame";
+import {postUser} from "../container/Music_Service"
 
 import {getUserScore, updateUserScore} from "./Music_Service";
 
@@ -20,6 +21,7 @@ const MusicContainer = () => {
     const [reset, setReset] = useState(false);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [artistList, setArtistList] = useState([]);
+    const [newUser, setNewUser] = useState("");
     
 
     console.log("main container selectedPlayer", selectedPlayer);
@@ -138,13 +140,33 @@ const MusicContainer = () => {
       setLeaderBoard(updatedLeaderBoard);
     };
     
-    if(selectedSong === null){
-      return null;
+  //   if(selectedSong === null){
+  //     return null;
+  // }
+
+  const handleNameChange = (e) => {
+    setNewUser(e.target.value)
   }
+
+  const handlePostUser = (e) => {
+    console.log("username", e.target.value)
+    e.preventDefault();
+    postUser({
+      name: newUser,
+      score: 0
+    })
+    e.target.reset();
+  }
+
   return(
 
       <div className="music-container">
           <header id="pageHeader">
+          <form onSubmit={handlePostUser}>
+            <label>UserName</label>
+            <input type="text" value={newUser}onChange={handleNameChange}/>
+            <input type="submit" value="Register"/>
+         </form>
             <p>Music Quiz</p>
           </header>
           <div id="mainArticle">
@@ -178,6 +200,8 @@ const MusicContainer = () => {
           </div>
 
             <nav id="mainNav">
+             { game ?    
+              <div>
               Leader Board:
               <br/>
               <ol>
@@ -185,9 +209,11 @@ const MusicContainer = () => {
                 leaderBoardSorted.map((player, index) => {
                 return ( <li key={index}>{player.name} : {player.score}</li>)})
               }
-              </ol>
+              </ol> 
               <br/>
-            </nav>
+              </div>: null
+              }
+              </nav> 
 
         <div id="musicFacts">
           <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
