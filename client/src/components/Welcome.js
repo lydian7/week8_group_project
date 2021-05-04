@@ -20,11 +20,11 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
          <h1>welcome</h1>
         <p><strong>Select a Player and a Genre to start!!!</strong> </p>
         <div id="dropdownmenu">
-              <select name="_selGenre" onChange={handleGenreChange}>
-                <option disabled selected>Select Genre</option> 
-                <option value="21">Rock</option>
-                <option value="14">Pop</option>
-                <option value="11">Jazz</option>
+              <select data-testid="genre-select" name="_selGenre" onChange={handleGenreChange}>
+                <option data-testid="genre-option" disabled selected>Select Genre</option> 
+                <option data-testid="genre-option" value="21">Rock</option>
+                <option data-testid="genre-option"  value="14">Pop</option>
+                <option data-testid="genre-option" value="11">Jazz</option>
               </select>
         </div>
         <div id="dropdownmenu2">

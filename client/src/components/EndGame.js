@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {updateUserScore} from "../container/Music_Service"
 
-const EndGame = ({userScore, setReset, selectedPlayer, leaderBoard, updateUser}) => {
+const EndGame = ({userScore, setGame, setCount, selectedPlayer, leaderBoard, updateUser, setUserScore}) => {
 
     console.log("endgame selectedPlayer", selectedPlayer)
 
@@ -9,6 +9,7 @@ const EndGame = ({userScore, setReset, selectedPlayer, leaderBoard, updateUser})
         const player = leaderBoard.find((data) => {
           return data._id === selectedPlayer
         })
+        
         console.log("endgame extracted player", player)
         const totalScore = userScore + player.score;
         console.log("totalScore", totalScore)
@@ -25,15 +26,20 @@ const EndGame = ({userScore, setReset, selectedPlayer, leaderBoard, updateUser})
             name: player.name,
             score: totalScore
         });
+        setGame(false);
+        setCount(0);
+        setUserScore(0);
     }
     
       let greeting = "";
 
     
+
       if (userScore === 5){
         greeting = `Sinatra, Mercury, Rose and you. What do you have in common? Greatness. What a score!`}
       if (userScore >= 3){
         greeting = `More Robbie Williams than Gary Barlow. Decent effort!`}
+
       if (userScore < 3){
         greeting = `What kind of music are balloons afraid of? Pop Music. That joke was as bad as your score. Pathetic!
         `}
