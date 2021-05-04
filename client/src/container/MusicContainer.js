@@ -3,6 +3,7 @@ import DidYouKnow from "../components/DidYouKnow";
 import EndGame from "../components/EndGame";
 import MusicGame from "../components/MusicGame";
 import {postUser} from "../container/Music_Service"
+import logo from "../components/logo.png";
 
 import {getUserScore, updateUserScore} from "./Music_Service";
 
@@ -176,10 +177,11 @@ const MusicContainer = () => {
           <header id="pageHeader">
 
           { !game ? 
-          <form onSubmit={handlePostUser}>
-            <label>UserName</label>
-            <input type="text" value={newUser}onChange={handleNameChange}/>
-            <input type="submit" value="Register"/>
+          <form id="user-form" onSubmit={handlePostUser}>
+            <label id="un">UserName</label>
+            <input id="text-box" type="text" value={newUser}onChange={handleNameChange}/>
+            
+            <button id="register" type="submit" value="Register">Register</button>
          </form> : 
          
          <svg xmlns="http://www.w3.org/2000/svg" class="headerequilizer" viewBox="0 0 128 128">
@@ -194,8 +196,11 @@ const MusicContainer = () => {
          </svg>
 
           }  
-
-          <h1>ChartStar</h1>
+          <h1 id="title">ChartStar</h1>
+            <a href="javascript:history.go(0)">
+              <img id="logo" src={logo} alt="logo" width="80" height="60" />
+            </a>
+          
 
           </header>
           <div id="mainArticle">

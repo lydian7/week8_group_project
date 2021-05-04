@@ -81,11 +81,11 @@ function DidYouKnow({selectedGenre, game}){
     <div id="facts">
     <h2>Did you know?</h2>
     
-    <h2>{GenreDisplay} Facts</h2>
-      <ul>
-      <li> {factsList[getRandomInt(0,4)]} </li>
+    {/* <h2>{GenreDisplay} Facts</h2> */}
+      
+      <p>{factsList[getRandomInt(0,4)]}</p>
 
-      </ul> 
+      
       </div>
       </> : 
   
