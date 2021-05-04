@@ -21,10 +21,13 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
 
 
     return(
-      <div>
-        <div>
-         <h1>welcome</h1>
-        <p><strong>Select a Player and a Genre to start!!!</strong> </p>
+      <div >
+        <div id="welcome-box">
+         <h3 id="welcome-message">Welcome to Chartstar</h3>
+         <br></br>
+         <p>Let's play</p>
+         
+        <p>Select a Player and a Genre to start </p>
         <div id="dropdownmenu">
               <select data-testid="genre-select" name="_selGenre" onChange={handleGenreChange}>
                 <option data-testid="genre-option" disabled selected>Select Genre</option> 
@@ -45,7 +48,10 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
                 })}
               </select>
         </div>
-        <button onClick={handleGame}>Play!</button> 
+        <button id="play" onClick={handleGame}>Play!</button> 
+        
+        </div>
+        <div>
         <img id="app-loader" src="images/spinner1.png" /> 
         </div>
       

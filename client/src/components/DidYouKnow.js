@@ -78,13 +78,17 @@ function DidYouKnow({selectedGenre, game}){
     {game ? 
       <>
     <h2>Did you know?</h2>
+    <div id="facts">
+    
     <h2>{GenreDisplay} Facts</h2>
       <ul>
       <li> {factsList[getRandomInt(0,4)]} </li>
+
       </ul> 
       </> : null
       }
     </div>
+
     );
   }
     

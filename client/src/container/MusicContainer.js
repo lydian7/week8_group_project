@@ -159,12 +159,16 @@ const MusicContainer = () => {
 
       <div className="music-container">
           <header id="pageHeader">
+
           <form onSubmit={handlePostUser}>
             <label>UserName</label>
             <input type="text" value={newUser}onChange={handleNameChange}/>
             <input type="submit" value="Register"/>
          </form>
-            <p>Music Quiz</p>
+            
+
+            <h1>ChartStar</h1>
+
           </header>
           <div id="mainArticle">
 
@@ -193,10 +197,15 @@ const MusicContainer = () => {
           </div>
 
             <nav id="mainNav">
+
              { game ?    
               <div>
               Leader Board:
               <br/>
+
+              <h2>Leaderboard</h2>
+              
+
               <ol>
               {
                 leaderBoardSorted.map((player, index) => {
