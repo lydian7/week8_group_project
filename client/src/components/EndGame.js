@@ -10,6 +10,7 @@ const EndGame = ({userScore, setGame, setCount, selectedPlayer, leaderBoard, upd
         const player = leaderBoard.find((data) => {
           return data._id === selectedPlayer
         })
+        
         console.log("endgame extracted player", player)
         const totalScore = userScore + player.score;
         console.log("totalScore", totalScore)

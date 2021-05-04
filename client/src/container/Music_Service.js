@@ -16,8 +16,11 @@ export const updateUserScore = (user) => {
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then(res => res.json());
+  })
+    .then(res => res.json());
 }
+
+
 
 export const postUserScore = (payload) => {
   return fetch(userScoreUrl, {
