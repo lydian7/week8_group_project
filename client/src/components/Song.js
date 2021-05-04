@@ -60,6 +60,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
       
     <>
       <div className="card">
+      
       <div class="flip-box">
        <div class="flip-box-inner">
          <div class="flip-box-front">
@@ -75,8 +76,8 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
   </div>
 </div>  
       
-      
-      <div className="card-body">
+      <br/> <br/>
+      <br/>      <div className="card-body">
         {typeof(selectedSong) != "undefined" ? <audio
         controls
         src={selectedSong.link[1].attributes.href}>
@@ -104,6 +105,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
               : <p>undefined error</p>
 
             }
+            <br/>
             <button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore}>Submit</button>
             {/* <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button> */}
         
