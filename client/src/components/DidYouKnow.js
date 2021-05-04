@@ -85,6 +85,7 @@ function DidYouKnow({selectedGenre, game}){
       <li> {factsList[getRandomInt(0,4)]} </li>
 
       </ul> 
+      </div>
       </> : null
       }
     </div>
