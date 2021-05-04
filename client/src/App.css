@@ -85,6 +85,16 @@ h4 {
   text-align: center; 
   background-repeat: no-repeat;  
   background-size: cover;
+
+}
+#card {
+  align-items: center;
+  width: 300px;
+  height: 300px;
+}
+#card-body {
+
+  align-items: center;
 }
 
 #mainNav { 
@@ -140,8 +150,8 @@ header, footer, article, nav, div {
 
 .card-img-top {
   height: 200px;
-  width: 200px;
-  /* text-align: center; */
+  width: 300px;
+  text-align: center;
   /* align-items: center; */
 }
 
