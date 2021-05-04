@@ -2,7 +2,7 @@ html{
   height: 100%;
 }
 
-body {
+/* body {
   height: 100%;
   margin: 0;
 
@@ -16,7 +16,7 @@ body {
   background-size: 40%;
   box-shadow: 0 0 4px 4px rgb(84, 117, 245) inset;
 
-}
+} */
 
 .music-container { 
   display: grid;
@@ -129,7 +129,7 @@ header, footer, article, nav, div {
 }
 
 #app-loader {
-  height: 15vmin;
+  height: 10vmin;
   pointer-events: none;
 }
   
@@ -147,4 +147,30 @@ header, footer, article, nav, div {
     transform: rotate(360deg);
   }
 }
+
+#endBox {
+  
+  background-color: #333;
+  color: white;
+  font-size: larger;
+  border: solid 1px white;
+ 
+
+}
+
+#endBox > h2 {
+  color: white;
+}
+
+#endBox > button {
+  background-color: lightgrey;
+  color: white;
+  border: solid 1px white;
+}
+
+#endBox > button:hover {
+  background-color: white;
+  color: lightgray;
+}
+
 

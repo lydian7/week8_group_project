@@ -7,7 +7,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
 
 
   const [selectValue, setSelectValue] = useState("");
-  // const [count, setCount] = useState(0);
+  const [value, setValue] = useState(null);
 
   console.log("count", count);
 
@@ -18,14 +18,18 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
   // }
 
   const handleUserScore = (e) => {
+    
     if (e.target.value == selectedSong["im:artist"].label){
       setUserScore(userScore + 1)
     }
     if(count < 5){
       setCount(count + 1);
     }
+    handleSelectedSong()
+    
     
   }
+  console.log("value", value)
 
   const handleChange = (e) => {
     setSelectValue(e.target.value);
@@ -74,7 +78,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
             && optionList.length>3)  ?   
 
               <select name="quiz" className="dropdown" onChange={handleChange}>
-                <option defaultValue >Select Answer</option>
+                <option value="default" >Select Answer</option>
                 <option value={optionList[0]["im:artist"].label}>{optionList[0]["im:artist"].label}</option>
                 <option value={optionList[1]["im:artist"].label}>{optionList[1]["im:artist"].label}</option>
                 <option value={optionList[2]["im:artist"].label}>{optionList[2]["im:artist"].label}</option>
@@ -85,7 +89,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
 
             }
             <button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore}>Submit</button>
-            <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button>
+            {/* <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button> */}
         
           </p>
       </div>

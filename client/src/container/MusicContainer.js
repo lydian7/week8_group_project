@@ -149,7 +149,7 @@ const MusicContainer = () => {
               /> : null }
 
 
-              { game && count === 5 ? <EndGame userScore={userScore} setReset={setReset} selectedPlayer={selectedPlayer} leaderBoard={leaderBoard} updateUser={updateUser}/> : null}
+              { game && count === 5 ? <EndGame userScore={userScore} setGame={setGame} selectedPlayer={selectedPlayer} leaderBoard={leaderBoard} updateUser={updateUser} setCount={setCount} setUserScore={setUserScore}/> : null}
 
               
 
