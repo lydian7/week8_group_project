@@ -21,7 +21,7 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
         <p><strong>Select a Player and a Genre to start!!!</strong> </p>
         <div id="dropdownmenu">
               <select data-testid="genre-select" name="_selGenre" onChange={handleGenreChange}>
-                <option data-testid="genre-option" defaultValue disabled >Select Genre</option> 
+                <option data-testid="genre-option" disabled selected>Select Genre</option> 
                 <option data-testid="genre-option" value="21">Rock</option>
                 <option data-testid="genre-option"  value="14">Pop</option>
                 <option data-testid="genre-option" value="11">Jazz</option>
@@ -29,7 +29,7 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
         </div>
         <div id="dropdownmenu2">
               <select onChange={handleSelectedPlayer}>
-                <option disabled defaultValue>Select a Player</option>
+                <option disabled selected>Select a Player</option>
                 {leaderBoard.map((player) => {
                   return <option key={player._id} value={player._id}>{player.name}</option>
                 })}
