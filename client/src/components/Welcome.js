@@ -23,7 +23,7 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
     return(
       <div >
         <div id="welcome-box">
-         <h3 id="welcome-message">Welcome to Chartstar</h3>
+         <h2 id="welcome-message">Welcome to Chartstar</h2>
          <br></br>
          <p>Let's play</p>
          
