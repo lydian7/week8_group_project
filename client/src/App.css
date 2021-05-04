@@ -148,3 +148,29 @@ header, footer, article, nav, div {
   }
 }
 
+#endBox {
+  
+  background-color: #333;
+  color: white;
+  font-size: larger;
+  border: solid 1px white;
+ 
+
+}
+
+#endBox > h2 {
+  color: white;
+}
+
+#endBox > button {
+  background-color: lightgrey;
+  color: white;
+  border: solid 1px white;
+}
+
+#endBox > button:hover {
+  background-color: white;
+  color: lightgray;
+}
+
+

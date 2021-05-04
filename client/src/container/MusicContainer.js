@@ -19,6 +19,7 @@ const MusicContainer = () => {
     const [count, setCount] = useState(0);
     const [reset, setReset] = useState(false);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
+    const [artistList, setArtistList] = useState([]);
     
 
     console.log("main container selectedPlayer", selectedPlayer);
@@ -32,7 +33,7 @@ const MusicContainer = () => {
       },[]);
       // console.log("leaderBoard", leaderBoard);
 
-    console.log("game", game);
+    console.log("artistList", artistList);
 
 
    
@@ -42,12 +43,22 @@ const MusicContainer = () => {
       .then(res => res.json())
       .then(data => setSongList(data.feed.entry))
       .catch(err => console.log(err));
+      
     }, [selectedGenre])
 
     useEffect(() => {
       // console.log('setSelected Song use effect')
       setSelectedSong(songList[getRandomInt(39)]);
+      duplicates();
     }, [songList])
+
+    const duplicates = () => {
+      const artistList = songList.map((song) => {
+      return song["im:artist"].label
+      })
+      const uniqueArtists = [...new Set(artistList)]
+      setArtistList(uniqueArtists)
+  }
 
     // console.log('selectedGenre is:')
     // console.log(selectedGenre)
@@ -74,18 +85,25 @@ const MusicContainer = () => {
     }
 
     const shuffleSongs = () => {
-      const tempList = songList.filter((song) => {
-      return song !== selectedSong;
+      const tempList = artistList.filter((artist) => {
+      return artist !== selectedSong["im:artist"].label;
       })
-      // console.log("tempList", tempList)
+      
       let newList = [];
       for(let i=0; i<3; i++){
-        const extractedSong = tempList[getRandomInt(tempList.length - 1)]
-        newList.push(extractedSong);
-        const indexToRemove = tempList.indexOf(extractedSong);
+        const extractedArtist = tempList[getRandomInt(tempList.length - 1)]
+        // if (extractedSong['im:artist'].label)
+        newList.push(extractedArtist);
+        const indexToRemove = tempList.indexOf(extractedArtist);
         tempList.splice(indexToRemove, 1);
       }
-      newList.push(selectedSong);
+      console.log("tempList", tempList)
+      console.log("selectedSong", selectedSong)
+      if (selectedSong){
+        newList.push(selectedSong["im:artist"].label);
+
+      }
+      
 
     
 
@@ -120,7 +138,9 @@ const MusicContainer = () => {
       setLeaderBoard(updatedLeaderBoard);
     };
     
-
+    if(selectedSong === null){
+      return null;
+  }
   return(
 
       <div className="music-container">
