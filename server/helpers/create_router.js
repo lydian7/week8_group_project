@@ -58,6 +58,8 @@ const createRouter = function (collection) {
   router.put('/:id', (req, res) => {
     const id = req.params.id;
     const updatedData = req.body;
+    delete updatedData._id;
+    
     collection
       .updateOne(
         { _id: ObjectID(id) },
@@ -70,8 +72,8 @@ const createRouter = function (collection) {
         console.error(err)
         res.status(500)
         res.json({status: 500, error: err})
-      })
-  })
+      });
+  });
 
   return router;
 };

@@ -1,35 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Song from "../components/Song";
 
-const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong}) => {
+
+const MusicGame = ({songList, getRandomInt, selectedSong, setSelectedSong, optionList, handleUserScore, count, setCount, userScore, setUserScore}) => {
+
 
     
 
+    console.log()
 
-
-    // const songClips = songList.map((song, index) => {
-    //    return <button key={index} value={song.link[1].attributes.href} onClick={handlePlay}>Play</button>
-
-
-      
-    // })
-
-    const handleSelectedSong = () => {
-      setSelectedSong(songList[getRandomInt(40)])
+    if(selectedSong === null){
+        return null;
     }
 
-
-  
     return(
         
         <div id="musicgame">
-            { selectedSong !== null ? <Song selectedSong={selectedSong}/> : null} 
+
+      
+            <Song setSelectedSong={setSelectedSong} getRandomInt={getRandomInt} songList={songList} setUserScore={setUserScore} selectedSong={selectedSong} optionList={optionList} userScore={userScore} handleUserScore={handleUserScore} count={count} setCount={setCount}/>
+
+
             <br/>
-            <button onClick={handleSelectedSong}>Next Song</button>
+           
             <br/>
         </div>
        
-    //    [getRandomInt(40)]
     )
 }
 

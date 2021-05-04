@@ -15,6 +15,10 @@ MongoClient.connect('mongodb://localhost:27017')
   const musicFacts = db.collection('facts');
   const factsRouter = createRouter(musicFacts);
   app.use('/api/musicfacts', factsRouter);
+
+  const userScore = db.collection('userscore');
+  const userscoreRouter = createRouter(userScore);
+  app.use('/api/userscore', userscoreRouter);
 })
 .catch(console.err);
 
