@@ -43,6 +43,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
 
   const handleSelectedSong = () => {
     setSelectedSong(songList[getRandomInt(39)]);
+    setSelectValue("");
   }
 
   // const handleSubmit = () => {
@@ -80,8 +81,8 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
             {(typeof(optionList[0])!= "undefined" 
             && optionList.length>3)  ?   
 
-              <select name="quiz" className="dropdown" onChange={handleChange}>
-                <option disabled hidden value="" >Select Answer</option>
+              <select name="quiz" className="dropdown" onChange={handleChange} value={selectValue}>
+                <option selected>Select Answer</option>
                 <option value={optionList[0]}>{optionList[0]}</option>
                 <option value={optionList[1]}>{optionList[1]}</option>
                 <option value={optionList[2]}>{optionList[2]}</option>
