@@ -77,16 +77,18 @@ function DidYouKnow({selectedGenre, game}){
     <div>
     {game ? 
       <>
+      <div>
+           <h2>Did you know?</h2>
+       <div class="container">
+<figure class="wave">
+  <img src="https://media.edutopia.org/styles/responsive_2880px_16x9/s3/masters/d7_images/cover_media/alegria-169hero-music-shutterstock.jpg" alt="rajni"></img>
+  <div class="text-block">
+  <p> {factsList[getRandomInt(0,4)]} </p>
+  </div>
+</figure>
+<figcaption>{GenreDisplay} Facts</figcaption> </div> </div>
+     
     
-    <div id="facts">
-    <h2>Did you know?</h2>
-    
-    {/* <h2>{GenreDisplay} Facts</h2> */}
-      
-      <p>{factsList[getRandomInt(0,4)]}</p>
-
-      
-      </div>
       </> : 
   
       <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128">
