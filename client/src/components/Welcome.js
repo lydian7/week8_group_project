@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 
-const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard}) => {
+const Welcome= ({game, setGame, selectedGenre, setSelectedGenre, selectedPlayer, setSelectedPlayer, leaderBoard}) => {
     
     
-
-
     const handleGame = () => {
+      if(selectedPlayer && selectedGenre){
       setGame(!game)
+      }
     }
 
     const handleGenreChange = (e) => { // ==>>> NEED TO PREVENT DEFAULT VALUE FROM PASSING 0
@@ -17,8 +17,6 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
     const handleSelectedPlayer = (e) => {
       setSelectedPlayer(e.target.value)
     }
-
-
 
     return(
       <div >
