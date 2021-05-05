@@ -42,25 +42,19 @@ const Song = ({getRandomInt, songList, setSongList, selectedSong, optionList, co
   }
 
   const handleSelectedSong = () => {
-    gamePlayList();
+    // newly added function called when submit is pressed to remove current song from playlist and set a new playlist
+    gamePlayList(); 
     setSelectedSong(songList[getRandomInt(songList.length - 1)]);
     setSelectValue("");
   }
 
 
-  const gamePlayList = () => {
+  const gamePlayList = () => { /// ===> newly added to prevent duplicate songs from playing
     const tempList = songList.filter((song) => {
       return song["im:name"].label !== selectedSong["im:name"].label;
       })
     setSongList(tempList);
   }
-  // const handleSubmit = () => {
-  //   handleCount()
-  //   handleUserScore()
-  // }
-
- 
-
 
   return (
 

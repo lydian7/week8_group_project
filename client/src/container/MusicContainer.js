@@ -24,7 +24,7 @@ const MusicContainer = () => {
     const [newUser, setNewUser] = useState("");
     const [userRegistered, setUserRegistered] = useState(false);
     const [userCheck, setUserCheck] = useState(false);
-    const [songsPlayed, setSongsPlayed] = useState([]); 
+  
     
 
     console.log("main container selectedPlayer", selectedPlayer);
@@ -32,14 +32,12 @@ const MusicContainer = () => {
     useEffect(()=>{
       getUserScore()
       .then((data)=>{
-      // console.log(userScore);
+     
       setLeaderBoard(data)
       })
       setUserRegistered(false);
       },[userRegistered]);
-      // console.log("leaderBoard", leaderBoard);
-
-    console.log("artistList", artistList);
+  
 
     useEffect(() => {
       console.log('fetch api and set songlist use effect, listening to selectedGenre')
@@ -66,7 +64,6 @@ const MusicContainer = () => {
   }
 
     useEffect(() => {
-      // gamePlayList();
       shuffleSongs();
     }, [selectedSong])
 
@@ -129,22 +126,21 @@ const MusicContainer = () => {
       setLeaderBoard(updatedLeaderBoard);
     };
     
-  const handleNameChange = (e) => {
-    setNewUser(e.target.value)
-  }
-
-  const handlePostUser = (e) => {
-    e.preventDefault();
-    if (!newUser){
-      return
+    const handleNameChange = (e) => {
+      setNewUser(e.target.value)
     }
-    postUser({
-      name: newUser,
-      score: 0
-    })
 
-    setNewUser("")
-    setUserRegistered(true);
+    const handlePostUser = (e) => {
+      e.preventDefault();
+      if (!newUser){
+        return
+      }
+      postUser({
+        name: newUser,
+        score: 0
+      })
+      setNewUser("")
+      setUserRegistered(true);
   }
 
   return(
@@ -183,7 +179,7 @@ const MusicContainer = () => {
 
             <article>
 
-              { !game  ? <Welcome game={game} setGame={setGame} setSelectedGenre={setSelectedGenre} setSelectedPlayer={setSelectedPlayer} leaderBoard={leaderBoard}/> : null} 
+              { !game  ? <Welcome game={game} setGame={setGame} selectedGenre={selectedGenre}setSelectedGenre={setSelectedGenre} selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer} leaderBoard={leaderBoard}/> : null} 
 
               { game && count < 5 ? <MusicGame 
               songList={songList} 
