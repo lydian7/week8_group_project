@@ -64,7 +64,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
         
       <div className="card-body">
         <div>
-        {typeof(selectedSong) != "undefined" ? <audio
+        {typeof(selectedSong) != "undefined" ? <audio id="audio"
         controls
         src={selectedSong.link[1].attributes.href}>
             Your browser does not support the
