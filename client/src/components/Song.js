@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 
-const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount, userScore, setUserScore, setSelectedSong}) => {
+const Song = ({getRandomInt, songList, setSongList, selectedSong, optionList, count, setCount, userScore, setUserScore, setSelectedSong}) => {
 
 
 
@@ -42,10 +42,18 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
   }
 
   const handleSelectedSong = () => {
-    setSelectedSong(songList[getRandomInt(39)]);
+    gamePlayList();
+    setSelectedSong(songList[getRandomInt(songList.length - 1)]);
     setSelectValue("");
   }
 
+
+  const gamePlayList = () => {
+    const tempList = songList.filter((song) => {
+      return song["im:name"].label !== selectedSong["im:name"].label;
+      })
+    setSongList(tempList);
+  }
   // const handleSubmit = () => {
   //   handleCount()
   //   handleUserScore()

@@ -19,12 +19,12 @@ const MusicContainer = () => {
     const [leaderBoard, setLeaderBoard] = useState([]);
     const [game, setGame] = useState(false);
     const [count, setCount] = useState(0);
-    const [reset, setReset] = useState(false);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [artistList, setArtistList] = useState([]);
     const [newUser, setNewUser] = useState("");
     const [userRegistered, setUserRegistered] = useState(false);
     const [userCheck, setUserCheck] = useState(false);
+    const [songsPlayed, setSongsPlayed] = useState([]); 
     
 
     console.log("main container selectedPlayer", selectedPlayer);
@@ -41,17 +41,6 @@ const MusicContainer = () => {
 
     console.log("artistList", artistList);
 
-    // useEffect(()=>{
-    //   getUserScore()
-    //   .then((data)=>{
-    //   // console.log(userScore);
-    //   setLeaderBoard(data)
-    //   })
-    //   userRegistered
-    //   },[userRegistered]);
-
-
-   
     useEffect(() => {
       console.log('fetch api and set songlist use effect, listening to selectedGenre')
       fetch(`https://itunes.apple.com/gb/rss/topsongs/limit=40/genre=${selectedGenre}/json`)
@@ -62,10 +51,11 @@ const MusicContainer = () => {
     }, [selectedGenre])
 
     useEffect(() => {
-      // console.log('setSelected Song use effect')
-      setSelectedSong(songList[getRandomInt(39)]);
+      setSelectedSong(songList[getRandomInt(songList.length - 1)]); 
       duplicates();
     }, [songList])
+
+
 
     const duplicates = () => {
       const artistList = songList.map((song) => {
@@ -75,25 +65,11 @@ const MusicContainer = () => {
       setArtistList(uniqueArtists)
   }
 
-    // console.log('selectedGenre is:')
-    // console.log(selectedGenre)
-    // console.log("option list is:")
-    // console.log(optionList)
-
     useEffect(() => {
+      // gamePlayList();
       shuffleSongs();
     }, [selectedSong])
 
-    // const handleGenreChange = (e) => { // ==>>> NEED TO PREVENT DEFAULT VALUE FROM PASSING 0
-    //     setSelectedGenre(e.target.value)
-    // };
-
-    // const handleUserScore = (e) => {
-    //   if (e.target.value == selectedSong["im:artist"].label){
-    //     setUserScore(userScore + 1)
-    //   }
-      
-    // }
 
     useEffect(() => {
       setUserCheck(false);
@@ -143,23 +119,16 @@ const MusicContainer = () => {
       return player2.score - player1.score
     })
 
-    // console.log("sortedleaderboard", leaderBoardSorted)
-
     const updateUser = updatedUser => {
-      // req to server to update booking in DB
+      
       updateUserScore(updatedUser);
   
-      // update locally
       const updatedCustomerIndex = leaderBoard.findIndex(user => user._id === updatedUser._id);
       const updatedLeaderBoard = [...leaderBoard];
       updatedLeaderBoard[updatedCustomerIndex] = updatedUser;
       setLeaderBoard(updatedLeaderBoard);
     };
     
-  //   if(selectedSong === null){
-  //     return null;
-  // }
-
   const handleNameChange = (e) => {
     setNewUser(e.target.value)
   }
@@ -208,8 +177,6 @@ const MusicContainer = () => {
           <div id="logo-head"><a href="javascript:history.go(0)">
               <img id="logo" src={logo} alt="logo" width="80" height="60" />
             </a></div>
-            
-          
 
           </header>
           <div id="mainArticle">
@@ -220,6 +187,7 @@ const MusicContainer = () => {
 
               { game && count < 5 ? <MusicGame 
               songList={songList} 
+              setSongList={setSongList}
               selectedGenre={selectedGenre} 
               getRandomInt={getRandomInt} 
               userScore={userScore}
@@ -256,8 +224,6 @@ const MusicContainer = () => {
               </ol> 
               <br/>
               </div> : 
-
-              
 
               <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128">
                 
