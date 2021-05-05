@@ -287,10 +287,24 @@ header, footer, article, nav, div {
   
 }
 
+#audio {
+  background-color: #333;
+}
+
 .card-new{
   border: solid 1px white;
   background-color: whitesmoke;
   opacity: 0.9;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  
+}
+
+.card-body {
+  border: solid 1px  lightgray;
+  
+  background-color: lightgray;
 }
 
 .card-img-top{
