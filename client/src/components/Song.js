@@ -56,7 +56,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
 
   return (
 
-      <div className="card">
+      <div className="card-new">
       
         <div class="flip-box">
           <div class="flip-box-inner">
@@ -73,20 +73,22 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
           </div>
         </div>  
       
-      <br/> <br/>
-      <br/>      
+            
       <div className="card-body">
+        <div>
         {typeof(selectedSong) != "undefined" ? <audio
         controls
         src={selectedSong.link[1].attributes.href}>
             Your browser does not support the
             <code>audio</code> element.
         </audio> : <p>undefined error</p> } 
+        </div>
+        
 
-        <br/><br/><br/>    
-
-        <h5 className="card-title">Guess the artist!!!</h5>
-          <p className="card-text">
+        
+        <div><h5 className="card-title">Guess the artist</h5></div>
+        
+          <div className="card-text">
          
 
             {(typeof(optionList[0])!= "undefined" 
@@ -103,11 +105,9 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
               : <p>undefined error</p>
 
             }
-            <br/>
-            <button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore}>Submit</button>
-            {/* <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button> */}
-        
-          </p>
+            </div>
+          <div id="submit-answer"><button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore}>Submit</button>
+            {/* <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button> */}</div>
         </div>
       </div>
      

@@ -36,6 +36,7 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
                 <option data-testid="genre-option" value="11">Jazz</option>
               </select>
         </div>
+        <br></br>
         <div id="dropdownmenu2">
 
               <select data-testid="player-select" onChange={handleSelectedPlayer}>
@@ -48,10 +49,13 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
                 })}
               </select>
         </div>
+        <br>
+        </br>
         <button id="play" onClick={handleGame}>Play!</button> 
         
         </div>
-        <div>
+        <br></br>
+        <div id="spinning">
         <img id="app-loader" src="images/spinner1.png" /> 
         </div>
       

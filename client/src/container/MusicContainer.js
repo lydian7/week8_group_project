@@ -24,6 +24,7 @@ const MusicContainer = () => {
     const [artistList, setArtistList] = useState([]);
     const [newUser, setNewUser] = useState("");
     const [userRegistered, setUserRegistered] = useState(false);
+    const [userCheck, setUserCheck] = useState(false);
     
 
     console.log("main container selectedPlayer", selectedPlayer);
@@ -93,6 +94,12 @@ const MusicContainer = () => {
     //   }
       
     // }
+
+    useEffect(() => {
+      setUserCheck(false);
+
+      
+    }, [selectedPlayer])
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -178,10 +185,11 @@ const MusicContainer = () => {
 
           { !game ? 
           <form id="user-form" onSubmit={handlePostUser}>
-            <label id="un">UserName</label>
-            <input id="text-box" type="text" value={newUser}onChange={handleNameChange}/>
+            <div id="un"><label>UserName</label></div>
+            <div id="textBox"><input  type="text" value={newUser}onChange={handleNameChange}/></div>
+            <div id="register"><button  type="submit" value="Register">Register</button></div>
             
-            <button id="register" type="submit" value="Register">Register</button>
+            
          </form> : 
          
          <svg xmlns="http://www.w3.org/2000/svg" class="headerequilizer" viewBox="0 0 128 128">
@@ -196,10 +204,11 @@ const MusicContainer = () => {
          </svg>
 
           }  
-          <h1 id="title">ChartStar</h1>
-            <a href="javascript:history.go(0)">
+          <div id="title"><h1 >ChartStar</h1></div>
+          <div id="logo-head"><a href="javascript:history.go(0)">
               <img id="logo" src={logo} alt="logo" width="80" height="60" />
-            </a>
+            </a></div>
+            
           
 
           </header>
@@ -207,7 +216,7 @@ const MusicContainer = () => {
 
             <article>
 
-              { !game ? <Welcome game={game} setGame={setGame} setSelectedGenre={setSelectedGenre} setSelectedPlayer={setSelectedPlayer} leaderBoard={leaderBoard}/> : null} 
+              { !game  ? <Welcome game={game} setGame={setGame} setSelectedGenre={setSelectedGenre} setSelectedPlayer={setSelectedPlayer} leaderBoard={leaderBoard}/> : null} 
 
               { game && count < 5 ? <MusicGame 
               songList={songList} 
@@ -234,7 +243,7 @@ const MusicContainer = () => {
              { game ?    
               <div>
             
-              <br/>
+              
 
               <h2>Leaderboard</h2>
               
@@ -248,7 +257,10 @@ const MusicContainer = () => {
               <br/>
               </div> : 
 
+              
+
               <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128">
+                
               <g>
                 <title>Audio Equilizer</title>
                 <rect class="bar" transform="translate(0,0)" y="15"></rect>
