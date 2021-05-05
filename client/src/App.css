@@ -204,7 +204,7 @@ header, footer, article, nav, div {
 }
 
 #app-loader {
-  height: 10vmin;
+  height: 35vmin;
   pointer-events: none;
 }
   
@@ -259,10 +259,6 @@ header, footer, article, nav, div {
   color: white;
   font-size: large;
   padding-bottom: 10px;
-  
-  
-  
-  
 }
 
 #play {

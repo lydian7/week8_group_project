@@ -56,7 +56,7 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
         </div>
         <br></br>
         <div id="spinning">
-        <img id="app-loader" src="images/spinner1.png" /> 
+        <img id="app-loader" src="images/disc_spinner.png" /> 
         </div>
       
     
