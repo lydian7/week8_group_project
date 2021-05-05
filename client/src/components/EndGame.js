@@ -39,9 +39,12 @@ const EndGame = ({userScore, setGame, setCount, selectedPlayer, leaderBoard, upd
 
     
 
-      if (userScore === 5){
-        greeting = `Sinatra, Mercury, Rose and you. What do you have in common? Greatness. What a score!`}
-      if (userScore >= 3){
+      if (userScore == 5){
+        greeting = `Simply the best. Congratulations!`}
+      if (userScore == 4){
+        greeting = `Kylie and Cliff Richard have the joint most number 2 hits in UK chart history. Just like them you've just missed top spot. Good effort!`
+      }
+      if (userScore == 3){
         greeting = `More Robbie Williams than Gary Barlow. Decent effort!`}
 
       if (userScore < 3){
