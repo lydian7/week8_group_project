@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 
-const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount, userScore, setUserScore, setSelectedSong}) => {
+const Song = ({getRandomInt, songList, setSongList, selectedSong, optionList, count, setCount, userScore, setUserScore, setSelectedSong}) => {
 
 
 
@@ -42,17 +42,19 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
   }
 
   const handleSelectedSong = () => {
-    setSelectedSong(songList[getRandomInt(39)]);
+    // newly added function called when submit is pressed to remove current song from playlist and set a new playlist
+    gamePlayList(); 
+    setSelectedSong(songList[getRandomInt(songList.length - 1)]);
     setSelectValue("");
   }
 
-  // const handleSubmit = () => {
-  //   handleCount()
-  //   handleUserScore()
-  // }
 
- 
-
+  const gamePlayList = () => { /// ===> newly added to prevent duplicate songs from playing
+    const tempList = songList.filter((song) => {
+      return song["im:name"].label !== selectedSong["im:name"].label;
+      })
+    setSongList(tempList);
+  }
 
   return (
 
