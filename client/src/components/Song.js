@@ -57,23 +57,11 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
   return (
 
       <div className="card-new">
-      
-        <div class="flip-box">
-          <div class="flip-box-inner">
-            <div class="flip-box-front">
-              {typeof(selectedSong) != "undefined" ? 
-                   // <img src='https://source.unsplash.com/500x500/?music' class="card-img-top" alt="..."/>
-                 <img src='https://d2ai0ibaxpbki1.cloudfront.net/v2/images/collections/acoustic-stock-music-royalty-free-for-video.jpg' class="card-img-top"  alt="..."/>
-                  : <p>undefined error</p> } 
-            </div>
-            <div class="flip-box-back">
-              <h2>Guess the Artist</h2>
-              <p>?</p>
-            </div>
-          </div>
-        </div>  
-      
-            
+    
+      <div id="spinning">
+          <img id="app-loader" src="images/disc_spinner.png" /> 
+      </div>
+        
       <div className="card-body">
         <div>
         {typeof(selectedSong) != "undefined" ? <audio
@@ -106,7 +94,8 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
 
             }
             </div>
-          <div id="submit-answer"><button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore}>Submit</button>
+          <br/>  
+          <div id="submit-answer"><button type="submit" value={selectValue} className="btn btn-secondary" onClick={handleUserScore}>Submit</button>
             {/* <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button> */}</div>
         </div>
       </div>
