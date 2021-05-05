@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 
 const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard}) => {
     
+    
+
+
     const handleGame = () => {
       setGame(!game)
     }
@@ -14,11 +18,16 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
       setSelectedPlayer(e.target.value)
     }
 
+
+
     return(
-        <div>
-        <div>
-         <h1>welcome</h1>
-        <p><strong>Select a Player and a Genre to start!!!</strong> </p>
+      <div >
+        <div id="welcome-box">
+         <h2 id="welcome-message">Welcome to Chartstar</h2>
+         <br></br>
+         <p>Let's play</p>
+         
+        <p>Select a Player and a Genre to start </p>
         <div id="dropdownmenu">
               <select data-testid="genre-select" name="_selGenre" onChange={handleGenreChange}>
                 <option data-testid="genre-option" disabled selected>Select Genre</option> 
@@ -27,29 +36,39 @@ const Welcome= ({game, setGame, setSelectedGenre, setSelectedPlayer, leaderBoard
                 <option data-testid="genre-option" value="11">Jazz</option>
               </select>
         </div>
+        <br></br>
         <div id="dropdownmenu2">
 
               <select data-testid="player-select" onChange={handleSelectedPlayer}>
-                <option disabled defaultValue>Select a Player</option>
+
+                <option disabled selected>Select a Player</option>
               {/* <select onChange={handleSelectedPlayer}>
                 <option data-testid="player-select" disabled selected>Select a Player</option> */}
-
                 {leaderBoard.map((player) => {
                   return <option key={player._id} value={player._id}>{player.name}</option>
                 })}
               </select>
         </div>
-        <button onClick={handleGame}>Play!</button> 
-        <img id="app-loader" src="images/spinner1.png" /> 
+        <br>
+        </br>
+        <button id="play" onClick={handleGame}>Play!</button> 
+        
+        </div>
+        <br></br>
+        <div id="spinning">
+        <img id="app-loader" src="images/disc_spinner.png" /> 
         </div>
       
     
         
 
         </div>
+
         
     )
   
+
 }
+
 
 export default Welcome;

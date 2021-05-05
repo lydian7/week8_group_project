@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function DidYouKnow({selectedGenre}){
+function DidYouKnow({selectedGenre, game}){
   const [factsList, setFactsList] = useState([]);
 
   const [error, setError] = useState(null);
@@ -74,13 +74,37 @@ function DidYouKnow({selectedGenre}){
     return <div>Loading...</div>;
   } else {
     return (
-    <>
-    <h2>Did you know?</h2>
-    <h2>{GenreDisplay} Facts</h2>
-      <ul>
-      <li> {factsList[getRandomInt(0,4)]} </li>
-      </ul>
-      </>
+    <div>
+    {game ? 
+      <>
+      <div>
+           <h2>Did you know?</h2>
+       <div class="container">
+<figure class="wave">
+  <img src="https://media.edutopia.org/styles/responsive_2880px_16x9/s3/masters/d7_images/cover_media/alegria-169hero-music-shutterstock.jpg" alt="rajni"></img>
+  <div class="text-block">
+  <p> {factsList[getRandomInt(0,4)]} </p>
+  </div>
+</figure>
+<figcaption>{GenreDisplay} Facts</figcaption> </div> </div>
+     
+    
+      </> : 
+  
+      <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128">
+      <g>
+        <title>Audio Equilizer</title>
+        <rect class="bar" transform="translate(0,0)" y="15"></rect>
+        <rect class="bar" transform="translate(25,0)" y="15"></rect>
+        <rect class="bar" transform="translate(50,0)" y="15"></rect>
+        <rect class="bar" transform="translate(75,0)" y="15"></rect>
+        <rect class="bar" transform="translate(100,0)" y="15"></rect>
+      </g>
+      </svg>
+
+      }
+    </div>
+
     );
   }
     

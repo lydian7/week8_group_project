@@ -22,7 +22,7 @@ export const updateUserScore = (user) => {
 
 
 
-export const postUserScore = (payload) => {
+export const postUser = (payload) => {
   return fetch(userScoreUrl, {
       method: 'POST',
       body: JSON.stringify(payload),

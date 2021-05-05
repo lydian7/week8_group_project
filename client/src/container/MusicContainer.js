@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import DidYouKnow from "../components/DidYouKnow";
 import EndGame from "../components/EndGame";
 import MusicGame from "../components/MusicGame";
+import {postUser} from "../container/Music_Service"
+import logo from "../components/logo.png";
 
 import {getUserScore, updateUserScore} from "./Music_Service";
 
@@ -20,6 +22,9 @@ const MusicContainer = () => {
     const [reset, setReset] = useState(false);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [artistList, setArtistList] = useState([]);
+    const [newUser, setNewUser] = useState("");
+    const [userRegistered, setUserRegistered] = useState(false);
+    const [userCheck, setUserCheck] = useState(false);
     
 
     console.log("main container selectedPlayer", selectedPlayer);
@@ -30,10 +35,20 @@ const MusicContainer = () => {
       // console.log(userScore);
       setLeaderBoard(data)
       })
-      },[]);
+      setUserRegistered(false);
+      },[userRegistered]);
       // console.log("leaderBoard", leaderBoard);
 
     console.log("artistList", artistList);
+
+    // useEffect(()=>{
+    //   getUserScore()
+    //   .then((data)=>{
+    //   // console.log(userScore);
+    //   setLeaderBoard(data)
+    //   })
+    //   userRegistered
+    //   },[userRegistered]);
 
 
    
@@ -80,6 +95,12 @@ const MusicContainer = () => {
       
     // }
 
+    useEffect(() => {
+      setUserCheck(false);
+
+      
+    }, [selectedPlayer])
+
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
@@ -103,10 +124,7 @@ const MusicContainer = () => {
         newList.push(selectedSong["im:artist"].label);
 
       }
-      
-
-    
-
+  
       let currentIndex = newList.length, temporaryValue, randomIndex;
      
       while (0 != currentIndex) {
@@ -138,22 +156,67 @@ const MusicContainer = () => {
       setLeaderBoard(updatedLeaderBoard);
     };
     
-    if(selectedSong === null){
-      return null;
+  //   if(selectedSong === null){
+  //     return null;
+  // }
+
+  const handleNameChange = (e) => {
+    setNewUser(e.target.value)
   }
+
+  const handlePostUser = (e) => {
+    e.preventDefault();
+    if (!newUser){
+      return
+    }
+    postUser({
+      name: newUser,
+      score: 0
+    })
+
+    setNewUser("")
+    setUserRegistered(true);
+  }
+
   return(
 
       <div className="music-container">
           <header id="pageHeader">
-            <p>Music Quiz</p>
+
+          { !game ? 
+          <form id="user-form" onSubmit={handlePostUser}>
+            <div id="un"><label>UserName</label></div>
+            <div id="textBox"><input  type="text" value={newUser}onChange={handleNameChange}/></div>
+            <div id="register"><button  type="submit" value="Register">Register</button></div>
+            
+            
+         </form> : 
+         
+         <svg xmlns="http://www.w3.org/2000/svg" class="headerequilizer" viewBox="0 0 128 128">
+         <g>
+           <title>Audio Equilizer</title>
+           <rect class="bar" transform="translate(0,0)" y="15"></rect>
+           <rect class="bar" transform="translate(25,0)" y="15"></rect>
+           <rect class="bar" transform="translate(50,0)" y="15"></rect>
+           <rect class="bar" transform="translate(75,0)" y="15"></rect>
+           <rect class="bar" transform="translate(100,0)" y="15"></rect>
+         </g>
+         </svg>
+
+          }  
+          <div id="title"><h1 >ChartStar</h1></div>
+          <div id="logo-head"><a href="javascript:history.go(0)">
+              <img id="logo" src={logo} alt="logo" width="80" height="60" />
+            </a></div>
+            
+          
+
           </header>
           <div id="mainArticle">
 
-        
-
             <article>
 
-              { !game ? <Welcome game={game} setGame={setGame} setSelectedGenre={setSelectedGenre} setSelectedPlayer={setSelectedPlayer} leaderBoard={leaderBoard}/> : null} 
+              { !game  ? <Welcome game={game} setGame={setGame} setSelectedGenre={setSelectedGenre} setSelectedPlayer={setSelectedPlayer} leaderBoard={leaderBoard}/> : null} 
 
               { game && count < 5 ? <MusicGame 
               songList={songList} 
@@ -171,29 +234,51 @@ const MusicContainer = () => {
 
               { game && count === 5 ? <EndGame userScore={userScore} setGame={setGame} selectedPlayer={selectedPlayer} leaderBoard={leaderBoard} updateUser={updateUser} setCount={setCount} setUserScore={setUserScore}/> : null}
 
-              
-
 
             </article>
           </div>
 
             <nav id="mainNav">
-              Leader Board:
-              <br/>
+
+             { game ?    
+              <div>
+            
+              
+
+              <h2>Leaderboard</h2>
+              
+
               <ol>
               {
                 leaderBoardSorted.map((player, index) => {
                 return ( <li key={index}>{player.name} : {player.score}</li>)})
               }
-              </ol>
+              </ol> 
               <br/>
-            </nav>
+              </div> : 
+
+              
+
+              <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128">
+                
+              <g>
+                <title>Audio Equilizer</title>
+                <rect class="bar" transform="translate(0,0)" y="15"></rect>
+                <rect class="bar" transform="translate(25,0)" y="15"></rect>
+                <rect class="bar" transform="translate(50,0)" y="15"></rect>
+                <rect class="bar" transform="translate(75,0)" y="15"></rect>
+                <rect class="bar" transform="translate(100,0)" y="15"></rect>
+              </g>
+              </svg>
+              
+              }
+            </nav> 
 
         <div id="musicFacts">
-          <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre}/>
+          <DidYouKnow  userScore={userScore} selectedGenre={selectedGenre} game={game}/>
 
         </div>
-        <footer id="pageFooter">Music App @2021</footer>  
+        <footer id="pageFooter">CHARTSTAR @2021</footer>  
       </div>
 
   )

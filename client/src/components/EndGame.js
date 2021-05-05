@@ -29,6 +29,8 @@ const EndGame = ({userScore, setGame, setCount, selectedPlayer, leaderBoard, upd
         setGame(false);
         setCount(0);
         setUserScore(0);
+        
+        
     }
 
    

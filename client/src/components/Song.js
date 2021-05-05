@@ -43,6 +43,7 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
 
   const handleSelectedSong = () => {
     setSelectedSong(songList[getRandomInt(39)]);
+    setSelectValue("");
   }
 
   // const handleSubmit = () => {
@@ -55,33 +56,34 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
 
   return (
 
+      <div className="card-new">
     
-      
-    <>
-      <div className="card">
-
-        {typeof(selectedSong) != "undefined" ? <img src='https://source.unsplash.com/500x500/?music' class="card-img-top" alt="..."/> : <p>undefined error</p> }
-
+      <div id="spinning">
+          <img id="app-loader" src="images/disc_spinner.png" /> 
+      </div>
+        
       <div className="card-body">
-
+        <div>
         {typeof(selectedSong) != "undefined" ? <audio
         controls
         src={selectedSong.link[1].attributes.href}>
             Your browser does not support the
             <code>audio</code> element.
         </audio> : <p>undefined error</p> } 
+        </div>
+        
 
-        <br/><br/><br/>    
-
-        <h5 className="card-title">Guess the artist!!!</h5>
-          <p className="card-text">
+        
+        <div><h5 className="card-title">Guess the artist</h5></div>
+        
+          <div className="card-text">
          
 
             {(typeof(optionList[0])!= "undefined" 
             && optionList.length>3)  ?   
 
-              <select name="quiz" className="dropdown" onChange={handleChange}>
-                <option disabled hidden value="" >Select Answer</option>
+              <select name="quiz" className="dropdown" onChange={handleChange} value={selectValue}>
+                <option value="" disabled>Select Answer</option>
                 <option value={optionList[0]}>{optionList[0]}</option>
                 <option value={optionList[1]}>{optionList[1]}</option>
                 <option value={optionList[2]}>{optionList[2]}</option>
@@ -91,14 +93,14 @@ const Song = ({getRandomInt, songList, selectedSong, optionList, count, setCount
               : <p>undefined error</p>
 
             }
-            <button type="submit" value={selectValue} className="btn btn-primary" onClick={handleUserScore}>Submit</button>
-            {/* <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button> */}
-        
-          </p>
+            </div>
+          <br/>  
+          <div id="submit-answer"><button type="submit" value={selectValue} className="btn btn-secondary" onClick={handleUserScore}>Submit</button>
+            {/* <button onClick={handleSelectedSong} className="btn btn-secondary">Next Song</button> */}</div>
+        </div>
       </div>
-    </div>
      
-  </>
+  
   )
 }
 
