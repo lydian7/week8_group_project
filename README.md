@@ -61,7 +61,7 @@ After these steps if the browser does not automatically launch with the app, ope
 
 You should see the following: (p.s. If you want a challenge, try jazz!!!)
 
-![Main](images/CharStarMain.png)
+![Main](images/ChartStarMain.png)
 
 
 
